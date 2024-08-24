@@ -3,15 +3,14 @@ package co.edu.uniquindio;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Departamento {
-
+public class Proyecto {
     private String nombre;
     private String codigo;
-    public Collection<Empleado> ListaEmpleados;
-    public Departamento(String nombre, String codigo) {
+    public Collection<Empleado> EmpleadosAsignados;
+    public Proyecto(String nombre, String codigo) {
         this.nombre = nombre;
         this.codigo = codigo;
-        this.ListaEmpleados = new ArrayList<Empleado>();
+        this.EmpleadosAsignados = new ArrayList<Empleado>();
     }
 
     public String getNombre() {
