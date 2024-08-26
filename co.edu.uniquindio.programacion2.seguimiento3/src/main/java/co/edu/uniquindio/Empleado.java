@@ -1,7 +1,6 @@
 package co.edu.uniquindio;
 
 public abstract class Empleado {
-
     private String nombre;
     private String idEmpleado;
     private Departamento departamento;
@@ -12,6 +11,7 @@ public abstract class Empleado {
         this.departamento = departamento;
     }
 
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
