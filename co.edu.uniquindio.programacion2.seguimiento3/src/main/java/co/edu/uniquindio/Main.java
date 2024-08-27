@@ -151,6 +151,14 @@ public class Main {
         }
     }
 
+
+    /**
+     * Método para asignar empleados a un proyecto.
+     * Este método solicita al usuario los nombres de los empleados y los asigna a un proyecto.
+     * Crea objetos de tipo Técnico para simular la asignación de empleados.
+     *
+     * @param proyecto Proyecto al que se asignarán los empleados.
+     */
     private static Empleado crearEmpleado(String nombre, String idEmpleado, Departamento departamento) {
         // Selección del rol del empleado
         String[] roles = {"Gerente", "Técnico"};
@@ -174,7 +182,17 @@ public class Main {
             return null;
         }
     }
-
+    /**
+     * Método para asignar empleados a un proyecto.
+     *
+     * Este método solicita al usuario ingresar el nombre de los empleados a ser asignados a un proyecto.
+     * Cada empleado creado es un objeto de tipo Técnico que se agrega a la lista de empleados asignados del proyecto.
+     *
+     * El proceso se repite hasta que el usuario deje el campo de nombre vacío, momento en el cual se detiene la asignación.
+     *
+     * @param proyecto Proyecto al que se asignarán los empleados.
+     *                 Los empleados creados serán añadidos a la lista de empleados asignados del proyecto.
+     */
     private static void asignarEmpleadoAProyecto(Proyecto proyecto) {
         // Asignar empleados al proyecto
         List<Empleado> empleadosProyecto = new ArrayList<>();
@@ -196,6 +214,13 @@ public class Main {
         JOptionPane.showMessageDialog(null, "Empleados asignados al proyecto con éxito.");
     }
 
+
+    /**
+     * Método para evaluar el desempeño de un empleado.
+     * Dependiendo del tipo de empleado (Gerente o Técnico), muestra una evaluación general de sus habilidades.
+     *
+     * @param empleado Empleado al que se evaluará el desempeño.
+     */
     private static void evaluarDesempeno(Empleado empleado) {
         if (empleado instanceof Gerente) {
             Gerente gerente = (Gerente) empleado;
@@ -212,6 +237,15 @@ public class Main {
         }
     }
 
+
+    /**
+     * Método para asignar un proyecto a un gerente y distribuir tareas a los empleados del proyecto.
+     * Este método permite asignar empleados al proyecto y distribuirles tareas específicas.
+     * Los empleados creados son de tipo Técnico y se les asignan tareas técnicas que ejecutan inmediatamente.
+     *
+     * @param gerente Gerente a cargo de la asignación de tareas y la gestión del proyecto.
+     * @param proyecto Proyecto que será gestionado por el gerente.
+     */
     private static void asignarProyectoYDistribuirTareas(Gerente gerente, Proyecto proyecto) {
         // Asignar empleados al proyecto y distribuir tareas
         Map<Empleado, String> tareas = new HashMap<>();
