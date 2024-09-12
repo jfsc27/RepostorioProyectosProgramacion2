@@ -1,12 +1,14 @@
 package co.edu.uniquindio.factory;
 
-import co.edu.uniquindio.model.Departamento;
-import co.edu.uniquindio.model.Empresa;
-import co.edu.uniquindio.model.Proyecto;
+import co.edu.uniquindio.model.*;
 import co.edu.uniquindio.services.ICrudDepartamento;
+import co.edu.uniquindio.services.ICrudGerente;
 import co.edu.uniquindio.services.ICrudProyecto;
+import co.edu.uniquindio.services.ICrudTecnico;
 
-public class ModelFactory implements ICrudProyecto, ICrudDepartamento {
+import java.util.List;
+
+public class ModelFactory implements ICrudProyecto, ICrudDepartamento, ICrudTecnico, ICrudGerente {
     private static ModelFactory instance;
     private static Empresa empresa;
 
@@ -42,6 +44,11 @@ public class ModelFactory implements ICrudProyecto, ICrudDepartamento {
     }
 
     @Override
+    public List<Departamento> getDepartamentos() {
+        return empresa.getDepartamentos();
+    }
+
+    @Override
     public boolean crearProyecto(String nombre, String codigo) {
         return empresa.crearProyecto(nombre, codigo);
     }
@@ -59,6 +66,61 @@ public class ModelFactory implements ICrudProyecto, ICrudDepartamento {
     @Override
     public Proyecto getProyecto(String codigo) {
         return empresa.getProyecto(codigo);
+    }
+
+    @Override
+    public List<Proyecto> getProyectos() {
+        return empresa.getProyectos();
+    }
+
+    @Override
+    public boolean crearGerente(String nombre, String id, Departamento departamento) {
+        return empresa.crearGerente(nombre, id, departamento);
+    }
+
+    @Override
+    public boolean eliminarGerente(String id) {
+        return empresa.eliminarGerente(id);
+    }
+
+    @Override
+    public boolean actualizarGerente(String nombre, String id, Departamento departamento) {
+        return empresa.actualizarGerente(nombre, id, departamento);
+    }
+
+    @Override
+    public Gerente getGerente(String id) {
+        return empresa.getGerente(id);
+    }
+
+    @Override
+    public List<Gerente> getGerentes(String nombre) {
+        return empresa.getGerentes(nombre);
+    }
+
+    @Override
+    public boolean crearTecnico(String nombre, String id, Departamento departamento) {
+        return empresa.crearTecnico(nombre, id, departamento);
+    }
+
+    @Override
+    public boolean eliminarTecnico(String id) {
+        return empresa.eliminarTecnico(id);
+    }
+
+    @Override
+    public boolean actualizarTecnico(String nombre, String id, Departamento departamento) {
+        return empresa.actualizarTecnico(nombre, id, departamento);
+    }
+
+    @Override
+    public Tecnico getTecnico(String id) {
+        return empresa.getTecnico(id);
+    }
+
+    @Override
+    public List<Tecnico> getTecnicos(String nombre) {
+        return empresa.getTecnicos(nombre);
     }
 
     private void inicializarDatosQuemados() {
