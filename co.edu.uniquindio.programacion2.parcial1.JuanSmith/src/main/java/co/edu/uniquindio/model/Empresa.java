@@ -1,20 +1,26 @@
 package co.edu.uniquindio.model;
 
-import co.edu.uniquindio.services.ICrudDepartamento;
-import co.edu.uniquindio.services.ICrudGerente;
-import co.edu.uniquindio.services.ICrudProyecto;
-import co.edu.uniquindio.services.ICrudTecnico;
+import co.edu.uniquindio.services.*;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, ICrudGerente {
+public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, ICrudGerente, ICrudPresupuesto {
 
     private String nombre;
-    private List<Empleado> listaEmpleados = new ArrayList <Empleado>();
-    private List<Departamento> listaDepartamentos = new ArrayList <Departamento>();
-    private List<Proyecto> listaProyectos = new ArrayList <Proyecto>();
+    private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+    private List<Departamento> listaDepartamentos = new ArrayList<Departamento>();
+    private List<Proyecto> listaProyectos = new ArrayList<Proyecto>();
+    private List<Presupuesto> listaPresupuestos = new ArrayList<Presupuesto>();
+
+
+    public List<Presupuesto> getListaPresupuestos() {
+        return listaPresupuestos;
+    }
+
+    public void setListaPresupuestos(List<Presupuesto> listaPresupuestos) {
+        this.listaPresupuestos = listaPresupuestos;
+    }
 
     public Empresa(String nombre) {
         this.nombre = nombre;
@@ -52,19 +58,21 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
         this.listaProyectos = listaProyectos;
     }
 
-    public <T> void agregarAutomaticamente (T objeto){
-        if (objeto instanceof Empleado){
-            listaEmpleados.add((Empleado)objeto);
-        } else if (objeto instanceof Departamento){
-            listaDepartamentos.add((Departamento)objeto);
-        } else if (objeto instanceof Proyecto){
-            listaProyectos.add((Proyecto)objeto);
+    public <T> void agregarAutomaticamente(T objeto) {
+        if (objeto instanceof Empleado) {
+            listaEmpleados.add((Empleado) objeto);
+        } else if (objeto instanceof Departamento) {
+            listaDepartamentos.add((Departamento) objeto);
+        } else if (objeto instanceof Proyecto) {
+            listaProyectos.add((Proyecto) objeto);
+        } else if (objeto instanceof Presupuesto) {
+            listaPresupuestos.add((Presupuesto) objeto);
         }
     }
 
     @Override
     public boolean crearDepartamento(String nombre, String codigo) {
-        if (!verificarDepartamentoRepetido(nombre)){
+        if (!verificarDepartamentoRepetido(nombre)) {
             Departamento departamento = Departamento.builder().nombre(nombre).codigo(codigo).build();
             listaDepartamentos.add(departamento);
             return true;
@@ -74,8 +82,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean eliminarDepartamento(String codigo) {
-        for (Departamento departamento : listaDepartamentos){
-            if (departamento.getCodigo().equals(codigo)){
+        for (Departamento departamento : listaDepartamentos) {
+            if (departamento.getCodigo().equals(codigo)) {
                 listaDepartamentos.remove(departamento);
                 return true;
             }
@@ -85,12 +93,12 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean actualizarDepartamento(String nombre, String codigo, String codigoBuscar) {
-        boolean estado =false;
-        for (Departamento departamento : listaDepartamentos){
-            if (departamento.getCodigo().equals(codigo)){
+        boolean estado = false;
+        for (Departamento departamento : listaDepartamentos) {
+            if (departamento.getCodigo().equals(codigo)) {
                 departamento.setNombre(nombre);
                 departamento.setCodigo(codigo);
-                estado= true;
+                estado = true;
             }
         }
         return estado;
@@ -98,8 +106,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public Departamento getDepartamento(String codigo) {
-        for (Departamento departamento : listaDepartamentos){
-            if (departamento.getCodigo().equals(codigo)){
+        for (Departamento departamento : listaDepartamentos) {
+            if (departamento.getCodigo().equals(codigo)) {
                 return departamento;
             }
         }
@@ -108,9 +116,9 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public List<Departamento> getDepartamentos() {
-        if (listaDepartamentos.size() >0 ){
+        if (listaDepartamentos.size() > 0) {
             return listaDepartamentos;
-        }else {
+        } else {
             return null;
         }
     }
@@ -118,7 +126,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean crearProyecto(String nombre, String codigo) {
-        if (!verificarProyectoRepetido(nombre)){
+        if (!verificarProyectoRepetido(nombre)) {
             Proyecto proyecto = Proyecto.builder().nombre(nombre).codigo(codigo).build();
             listaProyectos.add(proyecto);
             return true;
@@ -139,18 +147,19 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     /**
      * Metodo para actualizar un proyecto dado su codigo de busqueda
+     *
      * @param nombre
      * @param codigo
      * @return
      */
     @Override
     public boolean actualizarProyecto(String nombre, String codigo, String codigoBuscar) {
-        boolean estado=false;
+        boolean estado = false;
         for (Proyecto proyecto : listaProyectos) {
-            if (proyecto.getCodigo().equals(codigoBuscar)){
+            if (proyecto.getCodigo().equals(codigoBuscar)) {
                 proyecto.setNombre(nombre);
                 proyecto.setCodigo(codigo);
-                estado=true;
+                estado = true;
             }
         }
         return estado;
@@ -158,8 +167,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public Proyecto getProyecto(String codigo) {
-        for (Proyecto proyecto : listaProyectos){
-            if (proyecto.getCodigo().equals(codigo)){
+        for (Proyecto proyecto : listaProyectos) {
+            if (proyecto.getCodigo().equals(codigo)) {
                 return proyecto;
             }
         }
@@ -168,9 +177,9 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public List<Proyecto> getProyectos() {
-        if (listaProyectos.size() >0){
+        if (listaProyectos.size() > 0) {
             return listaProyectos;
-        }else {
+        } else {
             return null;
         }
     }
@@ -178,7 +187,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean crearGerente(String nombre, String id) {
-        if (!verificarGerenteRepetido(nombre)){
+        if (!verificarGerenteRepetido(nombre)) {
             Gerente gerente = Gerente.builder().nombre(nombre).id(id).build();
             listaEmpleados.add(gerente);
             return true;
@@ -189,8 +198,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     @Override
     public boolean eliminarGerente(String id) {
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Gerente){
-                if (empleado.getId().equals(id)){
+            if (empleado instanceof Gerente) {
+                if (empleado.getId().equals(id)) {
                     listaEmpleados.remove(empleado);
                 }
                 return true;
@@ -201,10 +210,10 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean actualizarGerente(String nombre, String id, String idBuscar) {
-        boolean estado =false;
+        boolean estado = false;
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Gerente){
-                if (empleado.getId().equals(idBuscar)){
+            if (empleado instanceof Gerente) {
+                if (empleado.getId().equals(idBuscar)) {
                     empleado.setNombre(nombre);
                     empleado.setId(id);
                     estado = true;
@@ -217,8 +226,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     @Override
     public Gerente getGerente(String id) {
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Gerente){
-                if (empleado.getId().equals(id)){
+            if (empleado instanceof Gerente) {
+                if (empleado.getId().equals(id)) {
                     return (Gerente) empleado;
                 }
             }
@@ -230,7 +239,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     public List<Gerente> getGerentes(String nombre) {
         List<Gerente> gerentes = new ArrayList<Gerente>();
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Gerente){
+            if (empleado instanceof Gerente) {
                 gerentes.add((Gerente) empleado);
             }
         }
@@ -239,7 +248,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public boolean crearTecnico(String nombre, String id) {
-        if (!verificarTecnicoRepetido(nombre)){
+        if (!verificarTecnicoRepetido(nombre)) {
             Tecnico tecnico = Tecnico.builder().nombre(nombre).id(id).build();
             listaEmpleados.add(tecnico);
             return true;
@@ -250,8 +259,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     @Override
     public boolean eliminarTecnico(String id) {
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Tecnico){
-                if (empleado.getId().equals(id)){
+            if (empleado instanceof Tecnico) {
+                if (empleado.getId().equals(id)) {
                     listaEmpleados.remove(empleado);
                 }
                 return true;
@@ -264,8 +273,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     public boolean actualizarTecnico(String nombre, String id, String idBuscar) {
         boolean estado = false;
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Tecnico){
-                if (empleado.getId().equals(idBuscar)){
+            if (empleado instanceof Tecnico) {
+                if (empleado.getId().equals(idBuscar)) {
                     empleado.setNombre(nombre);
                     empleado.setId(id);
                     estado = true;
@@ -278,8 +287,8 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     @Override
     public Tecnico getTecnico(String id) {
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Tecnico){
-                if (empleado.getId().equals(id)){
+            if (empleado instanceof Tecnico) {
+                if (empleado.getId().equals(id)) {
                     return (Tecnico) empleado;
                 }
             }
@@ -291,35 +300,35 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     public List<Tecnico> getTecnicos(String nombre) {
         List<Tecnico> tecnicos = new ArrayList<Tecnico>();
         for (Empleado empleado : listaEmpleados) {
-            if (empleado instanceof Tecnico){
+            if (empleado instanceof Tecnico) {
                 tecnicos.add((Tecnico) empleado);
             }
         }
         return tecnicos;
     }
 
-    private boolean verificarDepartamentoRepetido (String nombre){
-        for (Departamento departamento : listaDepartamentos){
-            if (departamento.getNombre().equals(nombre)){
+    private boolean verificarDepartamentoRepetido(String nombre) {
+        for (Departamento departamento : listaDepartamentos) {
+            if (departamento.getNombre().equals(nombre)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean verificarProyectoRepetido (String nombre){
-        for (Proyecto proyecto : listaProyectos){
-            if (proyecto.getNombre().equals(nombre)){
+    private boolean verificarProyectoRepetido(String nombre) {
+        for (Proyecto proyecto : listaProyectos) {
+            if (proyecto.getNombre().equals(nombre)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean verificarTecnicoRepetido (String id){
-        for (Empleado empleado : listaEmpleados){
-            if (empleado instanceof Tecnico){
-                if (empleado.getId().equals(id)){
+    private boolean verificarTecnicoRepetido(String id) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado instanceof Tecnico) {
+                if (empleado.getId().equals(id)) {
                     return true;
                 }
             }
@@ -327,14 +336,79 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
         return false;
     }
 
-    private boolean verificarGerenteRepetido (String id){
-        for (Empleado empleado : listaEmpleados){
-            if (empleado instanceof Gerente){
-                if (empleado.getId().equals(id)){
+    private boolean verificarGerenteRepetido(String id) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado instanceof Gerente) {
+                if (empleado.getId().equals(id)) {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    private boolean verificarPresupuestoRepetido(String idPresupuesto) {
+        for (Presupuesto presupuesto : listaPresupuestos) {
+            if (presupuesto.getIdPresupuesto().equals(idPresupuesto)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean crearPresupuesto(String idPresupuesto, Double valor, String estado, String descripcion) {
+        if (!verificarPresupuestoRepetido(idPresupuesto)) {
+            Presupuesto presupuesto = Presupuesto.builder().idPresupuesto(idPresupuesto).valor(valor).estado(estado).descripcion(descripcion).build();
+            listaPresupuestos.add(presupuesto);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean eliminarPresupuesto(String idPresupuesto) {
+        for (Presupuesto presupuesto : listaPresupuestos) {
+            if (presupuesto.getIdPresupuesto().equals(idPresupuesto)) {
+                listaPresupuestos.remove(presupuesto);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean actualizarPresupuesto(String idPresupuesto, Double valor, String estado, String descripcion, String codigoBuscar) {
+        boolean actualizacion = false;
+        for (Presupuesto presupuesto : listaPresupuestos) {
+            if (presupuesto.getIdPresupuesto().equals(codigoBuscar)) {
+                presupuesto.setIdPresupuesto(idPresupuesto);
+                presupuesto.setValor(valor);
+                presupuesto.setEstado(estado);
+                presupuesto.setDescripcion(descripcion);
+
+                actualizacion = true;
+            }
+        }
+        return actualizacion;
+    }
+
+    @Override
+    public Presupuesto getPresupuesto(String idPresupuesto) {
+        for (Presupuesto presupuesto : listaPresupuestos) {
+            if (presupuesto.getIdPresupuesto().equals(idPresupuesto)) {
+                return presupuesto;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Presupuesto> getPresupuestos() {
+        if (listaPresupuestos.size() > 0) {
+            return listaPresupuestos;
+        } else {
+            return null;
+        }
     }
 }

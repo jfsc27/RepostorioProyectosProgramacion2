@@ -1,15 +1,12 @@
 package co.edu.uniquindio.factory;
 
 import co.edu.uniquindio.model.*;
-import co.edu.uniquindio.services.ICrudDepartamento;
-import co.edu.uniquindio.services.ICrudGerente;
-import co.edu.uniquindio.services.ICrudProyecto;
-import co.edu.uniquindio.services.ICrudTecnico;
+import co.edu.uniquindio.services.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ModelFactory implements ICrudProyecto, ICrudDepartamento, ICrudTecnico, ICrudGerente {
+public class ModelFactory implements ICrudProyecto, ICrudDepartamento, ICrudTecnico, ICrudGerente, ICrudPresupuesto {
     private static ModelFactory instance;
     private static Empresa empresa;
 
@@ -178,5 +175,30 @@ public class ModelFactory implements ICrudProyecto, ICrudDepartamento, ICrudTecn
         parametros.forEach(empresa::agregarAutomaticamente);
         ModelFactory.empresa =empresa;
 
+    }
+
+    @Override
+    public boolean crearPresupuesto(String idPresupuesto, Double valor, String estado, String descripcion) {
+        return empresa.crearPresupuesto(idPresupuesto, valor, estado, descripcion);
+    }
+
+    @Override
+    public boolean eliminarPresupuesto(String idPresupuesto) {
+        return empresa.eliminarPresupuesto(idPresupuesto);
+    }
+
+    @Override
+    public boolean actualizarPresupuesto(String idPresupuesto, Double valor, String estado, String descripcion, String codigoBuscar) {
+        return empresa.actualizarPresupuesto(idPresupuesto, valor, estado, descripcion, codigoBuscar);
+    }
+
+    @Override
+    public Presupuesto getPresupuesto(String idPresupuesto) {
+        return empresa.getPresupuesto(idPresupuesto);
+    }
+
+    @Override
+    public List<Presupuesto> getPresupuestos() {
+        return empresa.getPresupuestos();
     }
 }

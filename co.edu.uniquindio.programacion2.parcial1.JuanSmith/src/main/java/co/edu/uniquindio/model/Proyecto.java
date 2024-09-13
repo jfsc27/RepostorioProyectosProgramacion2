@@ -12,6 +12,15 @@ public class Proyecto implements IPrototypeProyecto {
     private String nombre;
     private String codigo;
     private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
+    private Presupuesto presupuesto;
+
+    public Presupuesto getPresupuesto() {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(Presupuesto presupuesto) {
+        this.presupuesto = presupuesto;
+    }
 
     public Proyecto(String nombre, String codigo) {
         this.nombre = nombre;
@@ -45,6 +54,12 @@ public class Proyecto implements IPrototypeProyecto {
 
     public void setListaEmpleados(List<Empleado> listaEmpleados) {
         this.listaEmpleados = listaEmpleados;
+    }
+
+    public  void asociarPresupuesto (Presupuesto presupuesto){
+        if (this.presupuesto != null){
+            this.presupuesto= presupuesto;
+        }
     }
 
     @Override

@@ -1,7 +1,7 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.services.IContribuyente;
-
+//Aqui se aplica el principio de responsabilidad unica puesto que esta clase, si bien no crea objetos de tipo empleado como tal, es la clase padre de gerente y tecnico que si se crea, entonces solo esta encargada de crear Empleados;
 public abstract class Empleado implements IContribuyente {
 
     private String nombre;
