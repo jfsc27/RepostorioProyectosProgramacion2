@@ -7,15 +7,23 @@ public abstract class Empleado implements IContribuyente {
     private String nombre;
     private String id;
     private Departamento departamento;
+    private Proyecto proyecto;
 
-    public Empleado(String nombre, String id, Departamento departamento) {
+    public Empleado(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
-        this.departamento = departamento;
+
+    }
+
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 
     public Empleado() {
-
     }
 
     public String getNombre() {
@@ -40,5 +48,17 @@ public abstract class Empleado implements IContribuyente {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    public void asociarDepartamento(Departamento departamento) {
+        if (departamento != null) {
+            this.departamento = departamento;
+        }
+    }
+
+    public void asociarProyecto(Proyecto proyecto) {
+        if (proyecto != null) {
+            this.proyecto = proyecto;
+        }
     }
 }

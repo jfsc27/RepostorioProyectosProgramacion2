@@ -5,7 +5,7 @@ import co.edu.uniquindio.model.Tecnico;
 public class TecnicoBuilder extends EmpleadoBuilder<TecnicoBuilder> {
 
     public Tecnico build (){
-        return new Tecnico(nombre, id, departamento);
+        return new Tecnico(nombre, id);
     }
 
     @Override

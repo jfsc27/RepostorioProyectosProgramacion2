@@ -4,8 +4,8 @@ import co.edu.uniquindio.model.builder.TecnicoBuilder;
 
 public class Tecnico extends Empleado{
 
-    public Tecnico(String nombre, String id, Departamento departamento) {
-        super(nombre, id, departamento);
+    public Tecnico(String nombre, String id) {
+        super(nombre, id);
     }
 
     public static TecnicoBuilder builder(){

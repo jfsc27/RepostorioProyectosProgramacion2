@@ -2,12 +2,14 @@ package co.edu.uniquindio.model.builder;
 
 import co.edu.uniquindio.model.Departamento;
 import co.edu.uniquindio.model.Empleado;
+import co.edu.uniquindio.model.Proyecto;
 
 public class EmpleadoBuilder<T extends EmpleadoBuilder<T>> {
 
     protected String nombre;
     protected String id;
     protected Departamento departamento;
+    protected Proyecto proyecto;
 
     public T nombre(String nombre) {
         this.nombre = nombre;
@@ -19,10 +21,6 @@ public class EmpleadoBuilder<T extends EmpleadoBuilder<T>> {
         return self ();
     }
 
-    public T departamento(Departamento departamento) {
-        this.departamento = departamento;
-        return self ();
-    }
 
     @SuppressWarnings("unchecked")
     protected T self() {

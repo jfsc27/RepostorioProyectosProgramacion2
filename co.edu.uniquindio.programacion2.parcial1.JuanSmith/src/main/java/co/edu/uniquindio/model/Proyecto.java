@@ -1,12 +1,13 @@
 package co.edu.uniquindio.model;
 
 import co.edu.uniquindio.model.builder.ProyectoBuilder;
+import co.edu.uniquindio.services.IPrototypeProyecto;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Proyecto {
+public class Proyecto implements IPrototypeProyecto {
 
     private String nombre;
     private String codigo;
@@ -44,5 +45,16 @@ public class Proyecto {
 
     public void setListaEmpleados(List<Empleado> listaEmpleados) {
         this.listaEmpleados = listaEmpleados;
+    }
+
+    @Override
+    public IPrototypeProyecto clone() {
+        Proyecto proyecto =null;
+        try {
+            proyecto = (Proyecto) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return proyecto;
     }
 }

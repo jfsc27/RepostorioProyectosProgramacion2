@@ -8,7 +8,7 @@ import java.util.List;
 public interface ICrudProyecto {
     public  boolean crearProyecto (String nombre, String codigo);
     public  boolean eliminarProyecto(String codigo);
-    public  boolean actualizarProyecto(String nombre, String codigo);
+    public  boolean actualizarProyecto(String nombre, String codigo, String codigoBuscar);
     public Proyecto getProyecto (String codigo);
     public List<Proyecto> getProyectos ();
 }

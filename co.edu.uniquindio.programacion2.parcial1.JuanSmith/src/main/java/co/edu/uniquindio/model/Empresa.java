@@ -5,8 +5,8 @@ import co.edu.uniquindio.services.ICrudGerente;
 import co.edu.uniquindio.services.ICrudProyecto;
 import co.edu.uniquindio.services.ICrudTecnico;
 
+import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, ICrudGerente {
@@ -52,6 +52,16 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
         this.listaProyectos = listaProyectos;
     }
 
+    public <T> void agregarAutomaticamente (T objeto){
+        if (objeto instanceof Empleado){
+            listaEmpleados.add((Empleado)objeto);
+        } else if (objeto instanceof Departamento){
+            listaDepartamentos.add((Departamento)objeto);
+        } else if (objeto instanceof Proyecto){
+            listaProyectos.add((Proyecto)objeto);
+        }
+    }
+
     @Override
     public boolean crearDepartamento(String nombre, String codigo) {
         if (!verificarDepartamentoRepetido(nombre)){
@@ -74,15 +84,16 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     }
 
     @Override
-    public boolean actualizarDepartamento(String nombre, String codigo) {
+    public boolean actualizarDepartamento(String nombre, String codigo, String codigoBuscar) {
+        boolean estado =false;
         for (Departamento departamento : listaDepartamentos){
-            if (departamento.getNombre().equals(nombre) && departamento.getCodigo().equals(codigo)){
+            if (departamento.getCodigo().equals(codigo)){
                 departamento.setNombre(nombre);
                 departamento.setCodigo(codigo);
-                return true;
+                estado= true;
             }
         }
-        return false;
+        return estado;
     }
 
     @Override
@@ -97,7 +108,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
     @Override
     public List<Departamento> getDepartamentos() {
-        if (listaDepartamentos.size() >0){
+        if (listaDepartamentos.size() >0 ){
             return listaDepartamentos;
         }else {
             return null;
@@ -126,16 +137,23 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
         return false;
     }
 
+    /**
+     * Metodo para actualizar un proyecto dado su codigo de busqueda
+     * @param nombre
+     * @param codigo
+     * @return
+     */
     @Override
-    public boolean actualizarProyecto(String nombre, String codigo) {
+    public boolean actualizarProyecto(String nombre, String codigo, String codigoBuscar) {
+        boolean estado=false;
         for (Proyecto proyecto : listaProyectos) {
-            if (proyecto.getNombre().equals(nombre) && proyecto.getCodigo().equals(codigo)){
+            if (proyecto.getCodigo().equals(codigoBuscar)){
                 proyecto.setNombre(nombre);
                 proyecto.setCodigo(codigo);
-                return true;
+                estado=true;
             }
         }
-        return false;
+        return estado;
     }
 
     @Override
@@ -159,7 +177,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
 
 
     @Override
-    public boolean crearGerente(String nombre, String id, Departamento departamento) {
+    public boolean crearGerente(String nombre, String id) {
         if (!verificarGerenteRepetido(nombre)){
             Gerente gerente = Gerente.builder().nombre(nombre).id(id).build();
             listaEmpleados.add(gerente);
@@ -182,18 +200,18 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     }
 
     @Override
-    public boolean actualizarGerente(String nombre, String id, Departamento departamento) {
+    public boolean actualizarGerente(String nombre, String id, String idBuscar) {
+        boolean estado =false;
         for (Empleado empleado : listaEmpleados) {
             if (empleado instanceof Gerente){
-                if (empleado.getId().equals(id) && empleado.getNombre().equals(nombre)){
+                if (empleado.getId().equals(idBuscar)){
                     empleado.setNombre(nombre);
                     empleado.setId(id);
-                    empleado.setDepartamento(departamento);
-                    return true;
+                    estado = true;
                 }
             }
         }
-        return false;
+        return estado;
     }
 
     @Override
@@ -220,7 +238,7 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     }
 
     @Override
-    public boolean crearTecnico(String nombre, String id, Departamento departamento) {
+    public boolean crearTecnico(String nombre, String id) {
         if (!verificarTecnicoRepetido(nombre)){
             Tecnico tecnico = Tecnico.builder().nombre(nombre).id(id).build();
             listaEmpleados.add(tecnico);
@@ -243,18 +261,18 @@ public class Empresa implements ICrudDepartamento, ICrudProyecto, ICrudTecnico, 
     }
 
     @Override
-    public boolean actualizarTecnico(String nombre, String id, Departamento departamento) {
+    public boolean actualizarTecnico(String nombre, String id, String idBuscar) {
+        boolean estado = false;
         for (Empleado empleado : listaEmpleados) {
             if (empleado instanceof Tecnico){
-                if (empleado.getId().equals(id) && empleado.getNombre().equals(nombre)){
+                if (empleado.getId().equals(idBuscar)){
                     empleado.setNombre(nombre);
                     empleado.setId(id);
-                    empleado.setDepartamento(departamento);
-                    return true;
+                    estado = true;
                 }
             }
         }
-        return false;
+        return estado;
     }
 
     @Override
