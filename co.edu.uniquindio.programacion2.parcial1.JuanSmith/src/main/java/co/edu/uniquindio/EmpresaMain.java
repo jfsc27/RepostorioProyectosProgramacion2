@@ -4,7 +4,7 @@ package co.edu.uniquindio;
 import co.edu.uniquindio.factory.ModelFactory;
 
 import java.sql.SQLOutput;
-
+//Profe lo de los principios solid estan en la interfaz contribuir y en empleado, no supe como hacer lo otro :(
 public class EmpresaMain {
     public static void main(String[] args) {
         ModelFactory modelFactory = ModelFactory.getInstance();
@@ -12,10 +12,10 @@ public class EmpresaMain {
     }
 
     public static void crudProyecto (ModelFactory modelFactory) {
-        //crearProyecto (modelFactory);
-        //eliminarProyecto (modelFactory);
-        //actualizarProyecto (modelFactory);
-        //getProyecto (modelFactory);
+        crearProyecto (modelFactory);
+        eliminarProyecto (modelFactory);
+        actualizarProyecto (modelFactory);
+        getProyecto (modelFactory);
         getProyectos(modelFactory);
 
     }
