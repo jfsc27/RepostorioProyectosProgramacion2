@@ -1,4 +1,7 @@
 package Mapping.DTO;
 
-public class UsuarioDTO {
+public record UsuarioDTO (
+    String nombreUsuario,
+    String contrasenia)
+{
 }
