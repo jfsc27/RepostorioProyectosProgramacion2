@@ -1,6 +1,6 @@
-package Services;
+package co.edu.uniquindio.proyectoFinal.Services;
 
-import Model.Usuario;
+import co.edu.uniquindio.proyectoFinal.Model.Usuario;
 
 import java.util.List;
 

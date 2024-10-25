@@ -1,6 +1,6 @@
-package Model.Builders;
+package co.edu.uniquindio.proyectoFinal.Model.Builders;
 
-import Model.Usuario;
+import co.edu.uniquindio.proyectoFinal.Model.Usuario;
 
 public class UsuarioBuilder {
     protected String nombreUsuario;
