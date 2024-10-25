@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyectoFinal.services;
 
-import Mapping.DTO.UsuarioDTO;
+import co.edu.uniquindio.proyectoFinal.mapping.dto.UsuarioDTO;
 import co.edu.uniquindio.proyectoFinal.model.Usuario;
 
 import java.util.List;
