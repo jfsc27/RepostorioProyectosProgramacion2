@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.Model;
+package co.edu.uniquindio.proyectoFinal.model;
 
 import Model.Builders.UsuarioBuilder;
 

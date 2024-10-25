@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.Factory;
+package co.edu.uniquindio.proyectoFinal.factory;
 
 public class modelFactory {
     private static modelFactory instance;

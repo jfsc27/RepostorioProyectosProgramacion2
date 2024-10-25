@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyectoFinal.Mapping.DTO;
+package co.edu.uniquindio.proyectoFinal.mapping.dto;
 
 public record UsuarioDTO (
     String nombreUsuario,
