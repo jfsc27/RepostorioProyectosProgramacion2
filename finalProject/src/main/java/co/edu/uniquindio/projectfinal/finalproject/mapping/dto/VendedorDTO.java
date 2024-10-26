@@ -1,5 +1,6 @@
 package co.edu.uniquindio.projectfinal.finalproject.mapping.dto;
 
+
 import java.util.List;
 
 public class VendedorDTO extends UsuarioDTO {
@@ -21,7 +22,7 @@ public class VendedorDTO extends UsuarioDTO {
         IdVendedor = idVendedor;
     }
 
-    public MuroDto getMuro() {
+    public MuroDTO getMuro() {
         return muro;
     }
 

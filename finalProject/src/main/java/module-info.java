@@ -11,6 +11,7 @@ module co.edu.uniquindio.projectfinal.finalproject {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires jdk.management;
+    requires java.desktop;
 
     opens co.edu.uniquindio.projectfinal.finalproject.viewController;
     opens co.edu.uniquindio.projectfinal.finalproject to javafx.fxml;

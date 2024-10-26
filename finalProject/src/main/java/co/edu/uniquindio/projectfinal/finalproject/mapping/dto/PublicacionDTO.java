@@ -9,17 +9,17 @@ public class PublicacionDTO {
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;
-    private ProductoDto producto;
-    private List<ComentarioDto> listaComentarios;
+    private ProductoDTO producto;
+    private List<ComentarioDTO> listaComentarios;
     private List<VendedorDTO> listaMegustas;
 
 
-    public PublicacionDTO(LocalDate fechaPublicacion, LocalTime horaPublicacion, String descripcion, ProductoDto producto) {
+    public PublicacionDTO(LocalDate fechaPublicacion, LocalTime horaPublicacion, String descripcion, ProductoDTO producto) {
         this.fechaPublicacion = fechaPublicacion;
         this.horaPublicacion = horaPublicacion;
         this.descripcion = descripcion;
         this.producto = producto;
-        listaComentarios = new ArrayList<ComentarioDto>();
+        listaComentarios = new ArrayList<ComentarioDTO>();
         listaMegustas = new ArrayList<VendedorDTO>();
     }
 
@@ -47,7 +47,7 @@ public class PublicacionDTO {
         this.descripcion = descripcion;
     }
 
-    public ProductoDto getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
