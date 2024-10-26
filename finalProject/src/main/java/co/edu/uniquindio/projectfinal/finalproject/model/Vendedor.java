@@ -1,70 +1,51 @@
 package co.edu.uniquindio.projectfinal.finalproject.model;
 
-public class Vendedor {
-    String nombre;
-    String apellido;
-    String direccion;
-    String cedula;
-    String nombreUsuario;
-    String contraseña;
-    String idVendedor;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Vendedor(String nombre, String apellido, String direccion, String cedula, String nombreUsuario, String Contraseña, String idVendedor) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.cedula = cedula;
-        this.nombreUsuario = nombreUsuario;
-        this.contraseña= contraseña;
+public class Vendedor extends Usuario {
+    private static final int MAX_CONTACTOS = 10;
+    private String idVendedor;
+    private final List<Vendedor> listaContactos = new ArrayList<>();
+    private final List<Producto> listaProductos = new ArrayList<>();
+    private Muro muro = new Muro();
+
+    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String password, String idVendedor) {
+        super(nombre, apellido, cedula, direccion, usuario, password);
         this.idVendedor = idVendedor;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Vendedor() {}
+
+    public boolean verificarContactoRepetido(Vendedor vendedor){
+        boolean repetido = false;
+        for (Vendedor vendedor1 : listaContactos){
+            if(vendedor1.getIdVendedor().equals(vendedor.getIdVendedor())){
+                repetido = true;
+            }
+        }
+        return repetido;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void agregarContacto(Vendedor vendedor) {
+        if(!verificarContactoRepetido(vendedor) && listaContactos.size() < MAX_CONTACTOS){
+            listaContactos.add(vendedor);
+        }
     }
 
-    public String getApellido() {
-        return apellido;
+    public List<Producto> getListaProductosDisponibles(){
+        ArrayList<Producto> disponibles = new ArrayList<>();
+
+        for (Producto producto : listaProductos){
+            if (producto.getEstado() != Estado.PUBLICADO){
+                disponibles.add(producto);
+            }
+        }
+        return disponibles;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void agregarProducto(Producto producto) {
+        listaProductos.add(producto);
     }
 
     public String getIdVendedor() {
@@ -73,5 +54,21 @@ public class Vendedor {
 
     public void setIdVendedor(String idVendedor) {
         this.idVendedor = idVendedor;
+    }
+
+    public List<Vendedor> getListaContactos() {
+        return listaContactos;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public Muro getMuro() {
+        return muro;
+    }
+
+    public void setMuro(Muro muro) {
+        this.muro = muro;
     }
 }

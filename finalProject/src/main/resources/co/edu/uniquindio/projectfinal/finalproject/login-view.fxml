@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.projectfinal.finalproject.viewController.LoginViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+   <AnchorPane prefHeight="371.0" prefWidth="291.0" style="-fx-background-color: #E5E5E5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.finalproject.viewController.LoginViewController">
+   <children>
+      <BorderPane prefHeight="38.0" prefWidth="291.0" style="-fx-background-color: #7F8C8D;" />
+      <Text fill="#978888" layoutX="37.0" layoutY="95.0" opacity="0.88" stroke="#a18b8b" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesión">
+         <font>
+            <Font name="Rockwell Extra Bold" size="27.0" />
+         </font>
+         <effect>
+            <Blend>
+               <topInput>
+                  <DisplacementMap>
+                     <mapData>
+                        <FloatMap />
+                     </mapData>
+                  </DisplacementMap>
+               </topInput>
+            </Blend>
+         </effect>
+      </Text>
+      <Text fill="#978888" layoutX="63.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicie sesión para continuar">
+         <effect>
+            <Glow />
+         </effect>
+         <font>
+            <Font name="Rockwell Extra Bold" size="10.0" />
+         </font>
+      </Text>
+      <TextField fx:id="usuarioText" layoutX="71.0" layoutY="186.0" />
+      <TextField fx:id="passText" layoutX="71.0" layoutY="243.0" />
+      <Text fill="#978888" layoutX="73.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
+         <font>
+            <Font name="Rockwell Extra Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="73.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Button fx:id="btnIniciarSesion" layoutX="88.0" layoutY="298.0" mnemonicParsing="false" onAction="#onIniciarSesion" text="Iniciar Sesión" textFill="#978888">
+         <font>
+            <Font name="Rockwell Extra Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text fill="#978888" layoutX="73.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+         <font>
+            <Font name="Rockwell Extra Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
 </AnchorPane>
