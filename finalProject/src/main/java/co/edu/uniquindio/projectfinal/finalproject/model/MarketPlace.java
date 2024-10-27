@@ -19,6 +19,8 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
         this.listaVendedores = new ArrayList<Vendedor>();
     }
 
+    public MarketPlace() {}
+
     public <T> void agregarAutomatico(T objeto){
         if (objeto instanceof Usuario){
             listaUsuarios.add((Usuario)objeto);

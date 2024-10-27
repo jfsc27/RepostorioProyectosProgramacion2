@@ -1,6 +1,7 @@
 package co.edu.uniquindio.projectfinal.finalproject.viewController;
 
 import co.edu.uniquindio.projectfinal.finalproject.controller.LoginController;
+import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.UsuarioDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

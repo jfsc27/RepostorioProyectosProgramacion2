@@ -18,6 +18,10 @@ public class UsuarioDTO {
     }
     public UsuarioDTO() {}
 
+    public UsuarioDTO(String text, String text1) {
+
+    }
+
     public String getNombre() {
         return nombre;
     }
