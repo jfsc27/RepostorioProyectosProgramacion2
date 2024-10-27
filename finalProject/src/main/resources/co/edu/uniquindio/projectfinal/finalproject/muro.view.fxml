@@ -1,65 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="565.0" prefWidth="800.0" style="-fx-background-color: #ECEFF1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.finalproject.viewController.MuroViewController">
-    <children>
-        <!-- Título Principal -->
-        <Label layoutX="303.0" layoutY="30.0" text="MARKETPLACE" textFill="#37474F">
-            <font>
-                <Font name="Rockwell Extra Bold" size="24.0" />
-            </font>
-        </Label>
+<TabPane prefHeight="565.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.projectfinal.finalproject.viewController.MuroViewController">
+    <tabs>
+        <Tab text="Marketplace">
+            <AnchorPane prefHeight="565.0" prefWidth="800.0" style="-fx-background-color: #ECEFF1;">
+                <children>
+                    <Label layoutX="303.0" layoutY="30.0" text="MARKETPLACE" textFill="#37474F">
+                        <font>
+                            <Font name="Rockwell Extra Bold" size="24.0" />
+                        </font>
+                    </Label>
+                    <AnchorPane layoutX="20.0" layoutY="70.0" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
+                        <children>
+                            <Label layoutX="10.0" layoutY="10.0" text="PRODUCTOS" textFill="#37474F">
+                                <font>
+                                    <Font name="Rockwell Extra Bold" size="18.0" />
+                                </font>
+                            </Label>
+                            <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="40.0" prefHeight="350.0" prefWidth="180.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
+                        </children>
+                    </AnchorPane>
 
-        <!-- Panel de Productos Izquierdo -->
-        <AnchorPane layoutX="20.0" layoutY="70.0" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
-            <children>
-                <Label layoutX="10.0" layoutY="10.0" text="PRODUCTOS" textFill="#37474F">
-                    <font>
+                    <AnchorPane layoutX="572.0" layoutY="70.0" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
+                        <children>
+                            <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="74.0" prefHeight="350.0" prefWidth="180.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
+                            <Label layoutX="31.0" layoutY="14.0" prefHeight="22.0" prefWidth="103.0" text="ULTIMOS" textFill="#37474F">
+                                <font>
+                                    <Font name="Rockwell Extra Bold" size="18.0" />
+                                </font>
+                            </Label>
+                            <Label layoutX="31.0" layoutY="36.0" prefHeight="22.0" prefWidth="130.0" text="PRODUCTOS" textFill="#37474F">
+                                <font>
+                                    <Font name="Rockwell Extra Bold" size="18.0" />
+                                </font>
+                            </Label>
+                        </children>
+                    </AnchorPane>
+
+                    <AnchorPane layoutX="260.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #CFD8DC;">
+                        <children>
+                            <Label layoutX="10.0" layoutY="10.0" text="LISTA DE CONTACTOS" textFill="#37474F">
+                                <font>
+                                    <Font name="Rockwell Extra Bold" size="18.0" />
+                                </font>
+                            </Label>
+                            <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="42.0" prefHeight="150.0" prefWidth="280.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
+                        </children>
+                    </AnchorPane>
+
+                    <ImageView fitHeight="233.0" fitWidth="233.0" layoutX="286.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../../../../../../../../../../../Downloads/MarketPlace-removebg-preview.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
+        </Tab>
+
+        <Tab text="Estadisticas">
+            <AnchorPane prefHeight="565.0" prefWidth="800.0" style="-fx-background-color: #ECEFF1;">
+            <AnchorPane layoutX="28.0" layoutY="37.0" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="57.0" prefHeight="350.0" prefWidth="180.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
+                  <ComboBox layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="Qué productos deseas ver" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="267.0" layoutY="45.0" prefHeight="313.0" prefWidth="471.0" style="-fx-background-color: #CFD8DC;">
+               <children>
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="346.0" text="Informacion por vendedor" textFill="#37474F">
+                     <font>
                         <Font name="Rockwell Extra Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="13.0" layoutY="110.0" prefHeight="190.0" prefWidth="441.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
+                  <ComboBox layoutX="24.0" layoutY="66.0" prefHeight="26.0" prefWidth="174.0" promptText="Seleccionar vendedor" />
+                  <ComboBox layoutX="217.0" layoutY="66.0" prefHeight="26.0" prefWidth="174.0" promptText="Seleccionar vendedor" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="422.0" layoutY="409.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Generar reporte" />
+            </AnchorPane>
+        </Tab>
+
+        <Tab text="Contactos">
+            <AnchorPane prefHeight="565.0" prefWidth="800.0" style="-fx-background-color: #ECEFF1;">
+                <Label layoutX="300.0" layoutY="30.0" text="LISTADO DE CONTACTOS" textFill="#37474F">
+                    <font>
+                        <Font name="Rockwell Extra Bold" size="24.0" />
                     </font>
                 </Label>
-                <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="40.0" prefHeight="350.0" prefWidth="180.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
-            </children>
-        </AnchorPane>
-
-        <!-- Panel de Último Producto Derecho -->
-        <AnchorPane layoutX="572.0" layoutY="70.0" prefHeight="450.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
-            <children>
-                <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="74.0" prefHeight="350.0" prefWidth="180.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
-                <Label layoutX="31.0" layoutY="14.0" prefHeight="22.0" prefWidth="103.0" text="ULTIMOS" textFill="#37474F">
-                    <font>
-                        <Font name="Rockwell Extra Bold" size="18.0" />
-                    </font>
-                </Label>
-            <Label layoutX="31.0" layoutY="36.0" prefHeight="22.0" prefWidth="130.0" text="PRODUCTOS" textFill="#37474F">
-               <font>
-                  <Font name="Rockwell Extra Bold" size="18.0" />
-               </font>
-            </Label>
-            </children>
-        </AnchorPane>
-
-        <!-- Panel de Listado de Contactos Inferior -->
-        <AnchorPane layoutX="260.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #CFD8DC;">
-            <children>
-                <Label layoutX="10.0" layoutY="10.0" text="LISTA DE CONTACTOS" textFill="#37474F">
-                    <font>
-                        <Font name="Rockwell Extra Bold" size="18.0" />
-                    </font>
-                </Label>
-                <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="42.0" prefHeight="150.0" prefWidth="280.0" style="-fx-background-color: #B0BEC5;" vbarPolicy="ALWAYS" />
-            </children>
-        </AnchorPane>
-          <ImageView fitHeight="233.0" fitWidth="233.0" layoutX="286.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../../../../Downloads/MarketPlace-removebg-preview.png" />
-         </image>
-      </ImageView>
-    </children>
-</AnchorPane>
+            </AnchorPane>
+        </Tab>
+    </tabs>
+</TabPane>
