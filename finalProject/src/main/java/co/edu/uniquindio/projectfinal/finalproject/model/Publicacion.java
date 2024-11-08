@@ -1,13 +1,14 @@
 package co.edu.uniquindio.projectfinal.finalproject.model;
 
 import co.edu.uniquindio.projectfinal.finalproject.service.IInteractuar;
+import co.edu.uniquindio.projectfinal.finalproject.service.IPublicacion;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Publicacion implements IInteractuar {
+public class Publicacion implements IInteractuar, IPublicacion {
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;

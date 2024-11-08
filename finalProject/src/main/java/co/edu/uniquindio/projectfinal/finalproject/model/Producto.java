@@ -1,8 +1,9 @@
 package co.edu.uniquindio.projectfinal.finalproject.model;
 
+import co.edu.uniquindio.projectfinal.finalproject.service.IProducto;
 import javafx.scene.image.Image;
 
-public class Producto {
+public class Producto implements IProducto {
     private String nombre;
     private Image imagen;
     private String categoria;
@@ -15,6 +16,11 @@ public class Producto {
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
+    }
+
+    @Override
+    public void mostrarProducto() {
+
     }
 
     // Método privado para cargar la imagen
