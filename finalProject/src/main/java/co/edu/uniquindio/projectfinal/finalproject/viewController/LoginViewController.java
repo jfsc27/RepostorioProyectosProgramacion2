@@ -26,7 +26,6 @@ public class LoginViewController implements Initializable {
 
     @FXML
     void onIniciarSesion(ActionEvent event) {
-        UsuarioDTO buscar = new UsuarioDTO(usuarioText.getText(), passText.getText());
 
     }
 

@@ -61,7 +61,6 @@
 
                     <ImageView fitHeight="233.0" fitWidth="233.0" layoutX="286.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <Image url="@../../../../../../../../../../../../Downloads/MarketPlace-removebg-preview.png" />
                         </image>
                     </ImageView>
                 </children>

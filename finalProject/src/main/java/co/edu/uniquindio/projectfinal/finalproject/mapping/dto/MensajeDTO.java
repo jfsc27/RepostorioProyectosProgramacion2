@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class MensajeDTO {
-    private UsuarioDTO usuario;
-    private LocalDate fecha;
-    private LocalTime hora;
-    private String mensaje;
+    public UsuarioDTO usuario;
+    public LocalDate fecha;
+    public LocalTime hora;
+    public String mensaje;
 
     public MensajeDTO(UsuarioDTO usuario , LocalDate fecha , LocalTime hora , String mensaje) {
         this.usuario = usuario;

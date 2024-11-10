@@ -20,9 +20,6 @@ public class ProductoDTO {
         this.precio = precio;
     }
 
-    /**
-     * SECCION GETTERS Y SETTERS
-     */
     public String getNombre() {
         return nombre;
     }

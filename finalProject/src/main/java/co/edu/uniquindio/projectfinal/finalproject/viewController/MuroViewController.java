@@ -3,13 +3,14 @@ package co.edu.uniquindio.projectfinal.finalproject.viewController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 
-public class MuroViewController {
+public class MuroViewController  implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -55,4 +56,8 @@ public class MuroViewController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

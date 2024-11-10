@@ -1,6 +1,6 @@
 package co.edu.uniquindio.projectfinal.finalproject.factory;
 
-import co.edu.uniquindio.projectfinal.finalproject.mapping.mappers.UsuarioMappingImpl;
+import co.edu.uniquindio.projectfinal.finalproject.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.projectfinal.finalproject.model.MarketPlace;
 import co.edu.uniquindio.projectfinal.finalproject.model.Vendedor;
 import org.controlsfx.control.PropertySheet;
@@ -8,11 +8,11 @@ import org.controlsfx.control.PropertySheet;
 public class ModelFactory {
 
     private static ModelFactory instance;
-    private static UsuarioMappingImpl mapping;
+    private static MarketPlaceMappingImpl mapping;
 
     private ModelFactory() {
         inicializarDatos();
-        mapping = new UsuarioMappingImpl();
+        mapping = new MarketPlaceMappingImpl();
 
     }
     public static ModelFactory getInstance() {
@@ -23,7 +23,7 @@ public class ModelFactory {
     }
     private void inicializarDatos() {
         MarketPlace m = new MarketPlace();
-        Vendedor v = new Vendedor("pepe", "si", "alli", "000", "user", "123", "01");
+        Vendedor v = new Vendedor("costeña", "sapaperra", "1234", "000", "user", "123", "01");
 
     }
 
@@ -31,11 +31,11 @@ public class ModelFactory {
         ModelFactory.instance = instance;
     }
 
-    public static UsuarioMappingImpl getMapping() {
+    public static MarketPlaceMappingImpl getMapping() {
         return mapping;
     }
 
-    public static void setMapping(UsuarioMappingImpl mapping) {
+    public static void setMapping(MarketPlaceMappingImpl mapping) {
         ModelFactory.mapping = mapping;
     }
 }
