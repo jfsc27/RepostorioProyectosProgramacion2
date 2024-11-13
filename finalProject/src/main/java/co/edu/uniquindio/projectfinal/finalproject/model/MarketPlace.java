@@ -102,5 +102,7 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
     @Override
     public void darMeGustaPublicacion(Vendedor usuario, Publicacion publicacion) {
 
+
+        
     }
 }
