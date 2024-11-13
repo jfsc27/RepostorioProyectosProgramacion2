@@ -93,9 +93,30 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
     public void setListaVendedores(List<Vendedor> listaVendedores) {
         this.listaVendedores = listaVendedores;
     }
+    public boolean verificarPublicacionExiste(Publicacion publicacion) {
+        List<Publicacion> publicaciones = new ArrayList<>();
+        for(Vendedor vendedor : listaVendedores){
+            publicaciones.addAll(vendedor.getMuro().getListaPublicaciones());
+        }
+
+        for(Publicacion publi : publicaciones){
+            if(publi.getProducto() == publicacion.getProducto()){
+                return true;
+            }
+        }
+        return false;
+
+    }
 
     @Override
-    public boolean crearPublicacion(Publicacion publicacion, Vendedor vendedor) {
+    public boolean crearPublicacion(Publicacion publicacion, String idVendedor) {
+        if(!verificarPublicacionExiste(publicacion)){
+            for(Vendedor vendedor : listaVendedores){
+                vendedor.setEstadoProducto(publicacion.getProducto());
+                vendedor.getMuro().agregarPublicacion(publicacion);
+                return true;
+            }
+        }
         return false;
     }
 

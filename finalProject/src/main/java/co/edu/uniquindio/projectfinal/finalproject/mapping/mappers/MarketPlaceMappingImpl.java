@@ -64,19 +64,33 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
             administrador.setDireccion(administradorDTO.getDireccion());
             administrador.setUsuario(administradorDTO.getUsuario());
             administrador.setPassword(administradorDTO.getPassword());
-            
             return administrador;
         }
             return null;}
 
     @Override
-    public Publicacion publicacionDtoToPublicacion(PublicacionDTO publicacion) {
-        return null;
+    public Publicacion publicacionDtoToPublicacion(PublicacionDTO publicacionDto) {
+
+        Publicacion publicacion = new Publicacion();
+        publicacion.setFechaPublicacion(publicacionDto.getFechaPublicacion());
+        publicacion.setHoraPublicacion(publicacionDto.getHoraPublicacion());
+        publicacion.setProducto(productoDtoToProducto(publicacionDto.getProducto()));
+        publicacion.setDescripcion(publicacionDto.getDescripcion());
+
+        publicacion.setListaComentarios(modelFactory.getListaComentarios(publicacionDto.getIdVendedor(), publicacionDto));
+        publicacion.setListaMegustas(modelFactory.getListaMeGusta(publicacionDto.getIdVendedor(), publicacionDto));
+        return publicacion;
     }
 
     @Override
     public PublicacionDTO publicacionToPublicacionDto(Publicacion publicacion) {
-        return null;
+        PublicacionDTO publicacionDto = new PublicacionDTO();
+        publicacionDto.setFechaPublicacion(publicacion.getFechaPublicacion());
+        publicacionDto.setHoraPublicacion(publicacion.getHoraPublicacion());
+        publicacionDto.setProducto(productoToProductoDto(publicacion.getProducto()));
+        publicacionDto.setDescripcion(publicacion.getDescripcion());
+        return publicacionDto;
+
     }
 
     @Override

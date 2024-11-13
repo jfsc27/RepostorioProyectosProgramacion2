@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PublicacionDTO {
+    private String idVendedor;
     private LocalDate fechaPublicacion;
     private LocalTime horaPublicacion;
     private String descripcion;
@@ -14,13 +15,18 @@ public class PublicacionDTO {
     private List<VendedorDTO> listaMegustas;
 
 
-    public PublicacionDTO(LocalDate fechaPublicacion, LocalTime horaPublicacion, String descripcion, ProductoDTO producto) {
+    public PublicacionDTO(LocalDate fechaPublicacion, LocalTime horaPublicacion, String descripcion, ProductoDTO producto, String idVendedor) {
         this.fechaPublicacion = fechaPublicacion;
         this.horaPublicacion = horaPublicacion;
         this.descripcion = descripcion;
         this.producto = producto;
+        this.idVendedor = idVendedor;
         listaComentarios = new ArrayList<ComentarioDTO>();
         listaMegustas = new ArrayList<VendedorDTO>();
+    }
+
+    public PublicacionDTO() {
+
     }
 
     public LocalDate getFechaPublicacion() {
@@ -69,6 +75,13 @@ public class PublicacionDTO {
 
     public void setListaMegustas(List<VendedorDTO> listaMegustas) {
         this.listaMegustas = listaMegustas;
+    }
+
+    public String getIdVendedor() {
+        return idVendedor;
+    }
+    public void setIdVendedor(String idVendedor) {
+        this.idVendedor = idVendedor;
     }
 }
 

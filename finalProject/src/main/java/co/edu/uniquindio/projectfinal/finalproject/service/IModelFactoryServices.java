@@ -32,7 +32,7 @@ public interface IModelFactoryServices {
     List<PublicacionDTO> getListaPublicacionesDto(String idVendedor);
 
     // CRUD PUBLICACION
-    boolean agregarPublicacion(PublicacionDTO publicacion, String idVendedor);
+    boolean agregarPublicacion(PublicacionDTO publicacionDto, String id);
     // CRUD COMENTARIO
     boolean agregarComentario(ComentarioDTO comentario, PublicacionDTO publicacion);
     void darLikeComentario(ComentarioDTO comentario, PublicacionDTO publicacion);

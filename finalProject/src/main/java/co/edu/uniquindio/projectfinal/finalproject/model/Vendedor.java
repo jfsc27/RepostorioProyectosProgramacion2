@@ -79,4 +79,12 @@ public class Vendedor extends Usuario {
     public void setListaContactos(List<Vendedor> listaContactos) {
         this.listaContactos = listaContactos;
     }
+
+    public void setEstadoProducto(Producto producto){
+        for(Producto product : listaProductos){
+            if(product.getImagen().equals(producto.getImagen())){
+                producto.setEstado(Estado.PUBLICADO);
+            }
+        }
+    }
 }

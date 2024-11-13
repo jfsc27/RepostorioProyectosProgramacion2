@@ -55,8 +55,20 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public boolean agregarPublicacion(PublicacionDTO publicacion, VendedorDTO vendedor) {
-        return false;
+    public boolean agregarPublicacion(PublicacionDTO publicacionDto, String id){
+        Publicacion publi = new Publicacion();
+        publi.setDescripcion(publicacionDto.getDescripcion());
+        publi.setFechaPublicacion(publicacionDto.getFechaPublicacion());
+        publi.setIdVendedor(publicacionDto.getIdVendedor());
+        publi.setHoraPublicacion(publicacionDto.getHoraPublicacion());
+        publi.setProducto(mapping.productoDtoToProducto(publicacionDto.getProducto()));
+
+        if (marketPlace.crearPublicacion(publi, id)){
+            return true;
+        }else {
+            return false;
+        }
+
     }
 
     @Override
@@ -96,7 +108,7 @@ public class ModelFactory implements IModelFactoryServices {
 
     @Override
     public List<Comentario> getListaComentarios(String idVendedor, PublicacionDTO publicacion) {
-        return List.of();
+        return null;
     }
 
     @Override
@@ -156,11 +168,11 @@ public class ModelFactory implements IModelFactoryServices {
         Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","", "Artículas deportivos",Estado.VENDIDO,4500000);
 
         //Creacion de publicaciones
-        Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable");
-        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1),LocalTime.now(),producto2,"Camiseta Local tipo jugador del mejor club de Colomboia. Disponible en todas las tallas de hombre, mujer y feministas");
-        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D");
-        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Deliciosa mano de guineo verde perfecta pa un cayeye. 1 mano por 2k, 3 manos en 5k pa ti");
-        Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4),LocalTime.now(),producto5,"El mejor balón que se ha creado en la historia del fútbol. Firmada por Camilo Zúñiga");
+        Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
+        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1),LocalTime.now(),producto2,"Camiseta Local tipo jugador del mejor club de Colomboia. Disponible en todas las tallas de hombre, mujer y feministas", "00002");
+        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D", "00003");
+        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Deliciosa mano de guineo verde perfecta pa un cayeye. 1 mano por 2k, 3 manos en 5k pa ti", "00004");
+        Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4),LocalTime.now(),producto5,"El mejor balón que se ha creado en la historia del fútbol. Firmada por Camilo Zúñiga", "00005");
 
         //Creacion de vendedores
         Vendedor vendedor1 = new Vendedor("Miguel", "Durant", "00001", "Cambia a diario", "MigueMC", "12345", "01");
