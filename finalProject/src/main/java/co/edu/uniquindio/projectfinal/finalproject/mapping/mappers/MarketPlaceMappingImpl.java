@@ -64,8 +64,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
             administrador.setDireccion(administradorDTO.getDireccion());
             administrador.setUsuario(administradorDTO.getUsuario());
             administrador.setPassword(administradorDTO.getPassword());
-
-            administrador.setLista
+            
             return administrador;
         }
             return null;}

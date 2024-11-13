@@ -1,9 +1,6 @@
 package co.edu.uniquindio.projectfinal.finalproject.factory;
 
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.ProductoDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.PublicacionDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.UsuarioDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.VendedorDTO;
+import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.*;
 import co.edu.uniquindio.projectfinal.finalproject.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.projectfinal.finalproject.model.*;
 import co.edu.uniquindio.projectfinal.finalproject.service.IModelFactoryServices;
@@ -29,6 +26,8 @@ public class ModelFactory implements IModelFactoryServices {
         }
         return instance;
     }
+
+
 
     @Override
     public UsuarioDTO getUsuario(UsuarioDTO usuario) {
@@ -56,7 +55,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public boolean agregarPublicacion(PublicacionDTO publicacion, String idVendedor) {
+    public boolean agregarPublicacion(PublicacionDTO publicacion, VendedorDTO vendedor) {
         return false;
     }
 
@@ -73,6 +72,76 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public List<PublicacionDTO> getListaPublicaciones(Muro muro) {
         return List.of();
+    }
+
+    @Override
+    public boolean crearUsuario(VendedorDTO vendedor) {
+        return false;
+    }
+
+    @Override
+    public List<ProductoDTO> getListaProductosDto(String id) {
+        return mapping.productosToProductosDto(marketPlace.getListaProductosVendedor(id));
+    }
+
+    @Override
+    public List<VendedorDTO> getListaContactosDto(String id) {
+        return List.of();
+    }
+
+    @Override
+    public List<Vendedor> getListaContactos(String id) {
+        return List.of();
+    }
+
+    @Override
+    public List<Comentario> getListaComentarios(String idVendedor, PublicacionDTO publicacion) {
+        return List.of();
+    }
+
+    @Override
+    public List<ComentarioDTO> getListaComentariosDto(String idVendedor, PublicacionDTO publicacion) {
+        return List.of();
+    }
+
+    @Override
+    public List<Vendedor> getListaMeGusta(String idVendedor, PublicacionDTO dto) {
+        return List.of();
+    }
+
+    @Override
+    public List<VendedorDTO> getListaMeGustaDto(String idVendedor, PublicacionDTO dto) {
+        return List.of();
+    }
+
+    @Override
+    public List<Publicacion> getListaPublicaciones(String idVendedor) {
+        return List.of();
+    }
+
+    @Override
+    public List<PublicacionDTO> getListaPublicacionesDto(String idVendedor) {
+        return List.of();
+    }
+
+    @Override
+    public boolean agregarPublicacion(PublicacionDTO publicacion, String idVendedor) {
+        return false;
+    }
+
+    @Override
+    public boolean agregarComentario(ComentarioDTO comentario, PublicacionDTO publicacion) {
+        return false;
+    }
+
+    @Override
+    public void darLikeComentario(ComentarioDTO comentario, PublicacionDTO publicacion) {
+
+    }
+
+    @Override
+    public int getLikesComentario(ComentarioDTO dto, PublicacionDTO publicacion) {
+        return 0;
     }
 
     private static void inicializarDatos() {

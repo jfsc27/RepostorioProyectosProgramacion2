@@ -39,6 +39,21 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
                 .orElse(null);
     }
 
+    /**
+     * Metodo para buscar la lista de productos de un vendedor por id
+     * @param id
+     * @return
+     */
+    public List<Producto> getListaProductosVendedor(String id) {
+        List<Producto> productos = new ArrayList<>();
+        for (Vendedor vendedor : listaVendedores) {
+            if (vendedor.getIdVendedor().equals(id)) {
+                productos = vendedor.getListaProductos();
+            }
+        }
+        return productos;
+    }
+
     public Usuario getUsuarioLogin(String usuario, String password) {
         return getUsuario(usuario, password);
     }
@@ -103,6 +118,6 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
     public void darMeGustaPublicacion(Vendedor usuario, Publicacion publicacion) {
 
 
-        
+
     }
 }
