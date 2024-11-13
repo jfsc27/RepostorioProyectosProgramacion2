@@ -7,7 +7,6 @@ import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.VendedorDTO;
 import co.edu.uniquindio.projectfinal.finalproject.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.projectfinal.finalproject.model.*;
 import co.edu.uniquindio.projectfinal.finalproject.service.IModelFactoryServices;
-import org.controlsfx.control.PropertySheet;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -47,7 +46,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public void darMeGustaPublicacion(UsuarioDTO usuario, PublicacionDTO publicacion) {
+    public void darMeGustaPublicacion(UsuarioDTO usuario, String idVendedor, PublicacionDTO dto) {
 
     }
 

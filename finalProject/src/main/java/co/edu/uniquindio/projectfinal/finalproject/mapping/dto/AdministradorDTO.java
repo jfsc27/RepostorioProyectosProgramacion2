@@ -8,6 +8,8 @@ public class AdministradorDTO extends UsuarioDTO{
         this.IdAdmin = IdAdmin;
     }
 
+    public AdministradorDTO() {}
+
     public String getIdAdmin() {
         return IdAdmin;
     }

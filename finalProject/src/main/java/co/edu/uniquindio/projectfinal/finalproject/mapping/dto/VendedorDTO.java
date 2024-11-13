@@ -13,6 +13,7 @@ public class VendedorDTO extends UsuarioDTO {
         super(nombre, apellido, cedula, direccion, usuario, password);
         this.IdVendedor = idVendedor;
     }
+    public VendedorDTO() {}
 
     public String getIdVendedor() {
         return IdVendedor;
