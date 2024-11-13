@@ -52,8 +52,8 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
         vendedor.setPassword(vendedorDTO.getPassword());
 
             vendedor.setListaProductos(productosDtoToProductos(modelFactory.getListaProductosDto(vendedorDto.getIdVendedor())));
-            vendedor.setMuro(muroDtoToMuro(vendedorDto.getMuro()));
-            vendedor.setListaContactos(modelFactory.getListaContactos(vendedorDto.getIdVendedor()));
+            vendedor.setMuro(muroDtoToMuro(vendedorDTO.getMuro()));
+            vendedor.setListaContactos(modelFactory.getListaContactos(vendedorDTO.getIdVendedor()));
         return vendedor;
     } else if (usuarioDto instanceof AdministradorDTO) {
             AdministradorDTO administradorDTO = (AdministradorDTO) usuarioDto;
@@ -65,7 +65,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
             administrador.setUsuario(administradorDTO.getUsuario());
             administrador.setPassword(administradorDTO.getPassword());
 
-            administrador.setLista
+            administrador.setLista;
             return administrador;
         }
             return null;}

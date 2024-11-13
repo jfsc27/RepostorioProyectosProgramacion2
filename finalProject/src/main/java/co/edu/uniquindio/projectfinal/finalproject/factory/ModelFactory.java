@@ -1,15 +1,13 @@
 package co.edu.uniquindio.projectfinal.finalproject.factory;
 
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.ProductoDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.PublicacionDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.UsuarioDTO;
-import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.VendedorDTO;
+import co.edu.uniquindio.projectfinal.finalproject.mapping.dto.*;
 import co.edu.uniquindio.projectfinal.finalproject.mapping.mappers.MarketPlaceMappingImpl;
 import co.edu.uniquindio.projectfinal.finalproject.model.*;
 import co.edu.uniquindio.projectfinal.finalproject.service.IModelFactoryServices;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,30 +30,43 @@ public class ModelFactory implements IModelFactoryServices {
 
     @Override
     public UsuarioDTO getUsuario(UsuarioDTO usuario) {
+        if(validarLogin(usuario)){
+            return mapping.usuarioToUsuarioDto(marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword()));
+        }
         return null;
     }
 
     @Override
     public boolean validarLogin(UsuarioDTO usuario) {
+        if (marketPlace.verificarUsuario(usuario.getUsuario(), usuario.getPassword())) {
+            return true;
+        }
         return false;
     }
 
     @Override
     public Usuario getUsuarioCompleto(UsuarioDTO usuario) {
-        return null;
+        return marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword());
     }
 
     @Override
     public void darMeGustaPublicacion(UsuarioDTO usuario, String idVendedor, PublicacionDTO dto) {
-
+        marketPlace.darMeGustaPublicacion((Vendedor) mapping.usuarioDtoToUsuario(usuario), idVendedor, dto.getFechaPublicacion(), dto.getHoraPublicacion());
     }
 
     @Override
     public List<ProductoDTO> getListaProductosDisponibles(UsuarioDTO usuario) {
-        return List.of();
+        Usuario user = marketPlace.getUsuarioLogin(usuario.getUsuario(), usuario.getPassword());
+        List<ProductoDTO> disponibles = new ArrayList<>();
+        if (user != null) {
+            for (Producto producto:((Vendedor)user).getListaProductosDisponibles()){
+                disponibles.add(mapping.productoToProductoDto(producto));
+            }
+        }
+        return disponibles;
     }
 
-    @Override
+
     public boolean agregarPublicacion(PublicacionDTO publicacion, VendedorDTO vendedor) {
         return false;
     }
@@ -73,6 +84,76 @@ public class ModelFactory implements IModelFactoryServices {
     @Override
     public List<PublicacionDTO> getListaPublicaciones(Muro muro) {
         return List.of();
+    }
+
+    @Override
+    public boolean crearUsuario(VendedorDTO vendedor) {
+        return false;
+    }
+
+    @Override
+    public List<ProductoDTO> getListaProductosDto(String id) {
+        return List.of();
+    }
+
+    @Override
+    public List<VendedorDTO> getListaContactosDto(String id) {
+        return List.of();
+    }
+
+    @Override
+    public List<Vendedor> getListaContactos(String id) {
+        return List.of();
+    }
+
+    @Override
+    public List<Comentario> getListaComentarios(String idVendedor, PublicacionDTO publicacion) {
+        return List.of();
+    }
+
+    @Override
+    public List<ComentarioDTO> getListaComentariosDto(String idVendedor, PublicacionDTO publicacion) {
+        return List.of();
+    }
+
+    @Override
+    public List<Vendedor> getListaMeGusta(String idVendedor, PublicacionDTO dto) {
+        return List.of();
+    }
+
+    @Override
+    public List<VendedorDTO> getListaMeGustaDto(String idVendedor, PublicacionDTO dto) {
+        return List.of();
+    }
+
+    @Override
+    public List<Publicacion> getListaPublicaciones(String idVendedor) {
+        return List.of();
+    }
+
+    @Override
+    public List<PublicacionDTO> getListaPublicacionesDto(String idVendedor) {
+        return List.of();
+    }
+
+    @Override
+    public boolean agregarPublicacion(PublicacionDTO publicacion, String idVendedor) {
+        return false;
+    }
+
+    @Override
+    public boolean agregarComentario(ComentarioDTO comentario, PublicacionDTO publicacion) {
+        return false;
+    }
+
+    @Override
+    public void darLikeComentario(ComentarioDTO comentario, PublicacionDTO publicacion) {
+
+    }
+
+    @Override
+    public int getLikesComentario(ComentarioDTO dto, PublicacionDTO publicacion) {
+        return 0;
     }
 
     private static void inicializarDatos() {
