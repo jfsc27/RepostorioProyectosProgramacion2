@@ -75,4 +75,8 @@ public class Vendedor extends Usuario {
     public void setListaProductos(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
     }
+
+    public void setListaContactos(List<Vendedor> listaContactos) {
+        this.listaContactos = listaContactos;
+    }
 }

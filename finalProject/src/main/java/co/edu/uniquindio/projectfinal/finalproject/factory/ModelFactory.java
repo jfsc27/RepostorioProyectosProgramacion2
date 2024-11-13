@@ -56,7 +56,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public boolean agregarPublicacion(PublicacionDTO publicacion, VendedorDTO vendedor) {
+    public boolean agregarPublicacion(PublicacionDTO publicacion, String idVendedor) {
         return false;
     }
 
