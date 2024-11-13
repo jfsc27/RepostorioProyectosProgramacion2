@@ -9,3 +9,17 @@
     -fx-effect: dropshadow(gaussian, rgba(255, 244, 180, 0.3),30,0,0,0);
 
 }
+.text-field{
+    -fx-background-color: #ffffff;
+    -fx-border-color: rgba(255, 244, 180, 0.3);
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px 10px;
+    -fx-effect: dropshadow(gaussian, rgba(255,244,180,0.3), 30, 0, 0, 0);
+    -fx-cursor: hand;
+}
+.text-field:focused {
+    -fx-border-color: rgba(255, 244, 180, 0.3);
+    -fx-border-width: 2px;
+}
