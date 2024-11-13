@@ -33,7 +33,7 @@ public class ModelFactory implements IModelFactoryServices {
 
     @Override
     public UsuarioDTO getUsuario(UsuarioDTO usuario) {
-
+        return null;
     }
 
     @Override
@@ -111,19 +111,19 @@ public class ModelFactory implements IModelFactoryServices {
         Administrador admin = new Administrador("Admin", "istrador", "00000", "Privada", "admin", "12345","00");
 
         //Creacion de comentarios
-        Comentario comentario = new Comentario(vendedor4, LocalDate.now(), LocalTime.now(),"Carisimo");
-        Comentario comentario2 = new Comentario(vendedor2,LocalDate.now().plusDays(2),LocalTime.now(),"Esta feo");
+        Comentario comentario = new Comentario(vendedor4, LocalDate.now(), LocalTime.now(),"Precio?");
+        Comentario comentario2 = new Comentario(vendedor2,LocalDate.now().plusDays(2),LocalTime.now(),"Yo conozco donde lo venden más barato");
 
         //Agregar comentario a publicaciones
         publicacion4.agregarComentario(comentario);
-        publicacion.agregarComentario(comentario2);
+        publicacion1.agregarComentario(comentario2);
 
         //Creacion de muros
         Muro muro = new Muro();
         Muro muro2 = new Muro();
 
         //Agregar publicaciones al muro
-        muro.agregarPublicacion(publicacion);
+        muro.agregarPublicacion(publicacion1);
         muro.agregarPublicacion(publicacion2);
         muro.agregarPublicacion(publicacion3);
         muro2.agregarPublicacion(publicacion4);
