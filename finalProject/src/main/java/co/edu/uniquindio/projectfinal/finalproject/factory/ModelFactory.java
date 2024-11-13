@@ -161,11 +161,11 @@ public class ModelFactory implements IModelFactoryServices {
         MarketPlace marketPlace1 = new MarketPlace();
 
         //Creacion de productos
-        Producto producto1 = new Producto("Servicio Guardaespaldas", "", "Servicio privado", Estado.PUBLICADO, 200);
-        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "","Equipación deportiva",Estado.PUBLICADO, 299950);
-        Producto producto3 = new Producto("Bicibleta usada", "","Artículos usados",Estado.PUBLICADO, 20000);
-        Producto producto4 = new Producto("Mano de guineo verde", "","Alimentos",Estado.PUBLICADO, 2000);
-        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","", "Artículas deportivos",Estado.VENDIDO,4500000);
+        Producto producto1 = new Producto("Servicio Guardaespaldas", "/co/edu/uniquindio/projectfinal/finalproject/imagenes/Guardaespaldas.jpg", "Servicio privado", Estado.PUBLICADO, 200);
+        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "/co/edu/uniquindio/projectfinal/finalproject/imagenes/Camiseta Junior.png","Equipación deportiva",Estado.PUBLICADO, 299950);
+        Producto producto3 = new Producto("Bicibleta usada", "/co/edu/uniquindio/projectfinal/finalproject/imagenes/biciPro.png","Artículos usados",Estado.PUBLICADO, 20000);
+        Producto producto4 = new Producto("Mano de guineo verde", "/co/edu/uniquindio/projectfinal/finalproject/imagenes/guineitos.jpeg","Alimentos",Estado.PUBLICADO, 2000);
+        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","/co/edu/uniquindio/projectfinal/finalproject/imagenes/brazuca.png", "Artículas deportivos",Estado.VENDIDO,4500000);
 
         //Creacion de publicaciones
         Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable");

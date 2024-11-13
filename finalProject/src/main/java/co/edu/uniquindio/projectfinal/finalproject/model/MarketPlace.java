@@ -103,6 +103,6 @@ public class MarketPlace implements IInteraccion, ICrudPublicacion {
     public void darMeGustaPublicacion(Vendedor usuario, Publicacion publicacion) {
 
 
-        
+
     }
 }
