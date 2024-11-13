@@ -1,0 +1,11 @@
+.btn-iniciar{
+    -fx-background-color: #e5e8e8;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.30),30,0,0,0);
+}
+.btn-iniciar:hover{
+    -fx-background-color: #9da8a8;
+    -fx-background-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 244, 180, 0.3),30,0,0,0);
+
+}
