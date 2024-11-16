@@ -331,6 +331,6 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
         for (Mensaje mensaje : mensajes) {
             mensajesDto.add(mensajeToMensajeDto(mensaje));
         }
-        return List.of();
+        return mensajesDto;
     }
 }
