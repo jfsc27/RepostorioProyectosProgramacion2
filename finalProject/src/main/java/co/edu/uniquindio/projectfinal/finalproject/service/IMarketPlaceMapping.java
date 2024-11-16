@@ -6,40 +6,38 @@ import co.edu.uniquindio.projectfinal.finalproject.model.*;
 import java.util.List;
 
 public interface IMarketPlaceMapping {
+    UsuarioDTO usuarioToUsuarioDTO(Usuario usuario);
+    Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO);
 
-    UsuarioDTO usuarioToUsuarioDto(Usuario usuario);
-    Usuario usuarioDtoToUsuario(UsuarioDTO usuarioDto);
+    Publicacion publicacionDTOToPublicacion(PublicacionDTO publicacion);
+    PublicacionDTO publicacionToPublicacionDTO(Publicacion publicacion);
 
-    Publicacion publicacionDtoToPublicacion(PublicacionDTO publicacion);
-    PublicacionDTO publicacionToPublicacionDto(Publicacion publicacion);
+    ProductoDTO productoToProductoDTO(Producto producto);
+    Producto productoDTOToProducto(ProductoDTO productoDTO);
 
-    ProductoDTO productoToProductoDto(Producto producto);
-    Producto productoDtoToProducto(ProductoDTO productoDto);
+    Mensaje mensajeDTOToMensaje(MensajeDTO mensaje);
+    MensajeDTO mensajeToMensajeDTO(Mensaje mensaje);
 
-    Mensaje mesajeDtoToMensaje(MensajeDTO mensaje);
-    MensajeDTO mensajeToMensajeDto(Mensaje mensaje);
+    Comentario comentarioDTOToComentario(ComentarioDTO comentario);
+    ComentarioDTO comentarioToComentarioDTO(Comentario comentario);
 
-    Comentario comentarioDtoToComentario(ComentarioDTO comentario);
-    ComentarioDTO comentarioToComentarioDto(Comentario comentario);
+    Muro muroDTOToMuro(MuroDTO muro);
+    MuroDTO muroToMuroDTO(Muro muro);
 
-    Muro muroDtoToMuro(MuroDTO muro);
-    MuroDTO muroToMuroDto(Muro muro);
+    List<VendedorDTO> VendedoresToVendedoresDTO(List<Vendedor> vendedores);
+    List<Vendedor> VendedoresDTOToVendedores(List<VendedorDTO> vendedores);
 
+    List<PublicacionDTO> publicacionesToPublicacionesDTO(List<Publicacion> publicaciones);
+    List<Publicacion> publicacionesDTOToPublicaciones(List<PublicacionDTO> publicacionesDTO);
 
-    List<VendedorDTO> VendedoresToVendedoresDto(List<Vendedor> vendedores);
-    List<Vendedor> VendedoresDtoToVendedores(List<VendedorDTO> vendedores);
+    List<ProductoDTO> productosToProductosDTO(List<Producto> productos);
+    List<Producto> productosDTOToProductos(List<ProductoDTO> productosDTO);
 
-    List<PublicacionDTO> publicacionesToPublicacionesDto(List<Publicacion> publicaciones);
-    List<Publicacion> publicacionesDtoToPublicaciones(List<PublicacionDTO> publicacionesDto);
+    List<Comentario> comentariosDTOToComentarios(List<ComentarioDTO> comentariosDTO);
+    List<ComentarioDTO> comentariosToComentariosDTO(List<Comentario> comentarios);
 
-    List<ProductoDTO> productosToProductosDto(List<Producto> productos);
-    List<Producto> productosDtoToProductos(List<ProductoDTO> productosDto);
-
-    List<Comentario> comentariosDtoToComentarios(List<ComentarioDTO> comentariosDto);
-    List<ComentarioDTO> comentariosToComentariosDto(List<Comentario> comentarios);
-
-    List<Mensaje> mensajesDtoToMensajes(List<MensajeDTO> mensajesDto);
-    List<MensajeDTO> mensajeToMensajesDto(List<Mensaje> mensajes);
+    List<Mensaje> mensajesDTOToMensajes(List<MensajeDTO> mensajesDTO);
+    List<MensajeDTO> mensajeToMensajesDTO(List<Mensaje> mensajes);
 
 
 

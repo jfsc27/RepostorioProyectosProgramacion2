@@ -16,25 +16,25 @@ public interface IModelFactoryServices {
     List<PublicacionDTO> getListaPublicaciones(Muro muro);
     boolean crearUsuario(VendedorDTO vendedor);
 
-    //Retorno de listas asociadas a clases
-    List<ProductoDTO> getListaProductosDto(String id);
+    // Retorno de listas asociadas a clases
+    List<ProductoDTO> getListaProductosDTO(String id);
 
-    List<VendedorDTO> getListaContactosDto(String id);
+    List<VendedorDTO> getListaContactosDTO(String id);
     List<Vendedor> getListaContactos(String id);
 
     List<Comentario> getListaComentarios(String idVendedor, PublicacionDTO publicacion);
-    List<ComentarioDTO> getListaComentariosDto(String idVendedor, PublicacionDTO publicacion);
+    List<ComentarioDTO> getListaComentariosDTO(String idVendedor, PublicacionDTO publicacion);
 
     List<Vendedor> getListaMeGusta(String idVendedor, PublicacionDTO dto);
-    List<VendedorDTO> getListaMeGustaDto(String idVendedor, PublicacionDTO dto);
+    List<VendedorDTO> getListaMeGustaDTO(String idVendedor, PublicacionDTO dto);
 
     List<Publicacion> getListaPublicaciones(String idVendedor);
-    List<PublicacionDTO> getListaPublicacionesDto(String idVendedor);
+    List<PublicacionDTO> getListaPublicacionesDTO(String idVendedor);
 
     // CRUD PUBLICACION
-    boolean agregarPublicacion(PublicacionDTO publicacionDto, String idVendedor);
+    boolean agregarPublicacion(PublicacionDTO publicacionDTO, String idVendedor);
     // CRUD COMENTARIO
     boolean agregarComentario(ComentarioDTO comentario, PublicacionDTO publicacion);
     void darLikeComentario(ComentarioDTO comentario, PublicacionDTO publicacion);
     int getLikesComentario(ComentarioDTO dto, PublicacionDTO publicacion);
-}
+

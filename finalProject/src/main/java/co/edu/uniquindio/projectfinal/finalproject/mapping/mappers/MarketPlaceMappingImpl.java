@@ -13,7 +13,7 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
 
 
     @Override
-    public UsuarioDTO usuarioToUsuarioDto(Usuario usuario) {
+    public UsuarioDTO usuarioToUsuarioDTO(Usuario usuario) {
         Vendedor vendedor = (Vendedor) usuario;
         if (usuario instanceof Vendedor) {
             VendedorDTO vendedorDTO = new VendedorDTO();
@@ -26,38 +26,36 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
             return vendedorDTO;
         } else if (usuario instanceof Administrador) {
             Administrador administrador = (Administrador) usuario;
-            AdministradorDTO administradorDto = new AdministradorDTO();
-            administradorDto.setNombre(administrador.getNombre());
-            administradorDto.setApellido(administrador.getApellido());
-            administradorDto.setCedula(administrador.getCedula());
-            administradorDto.setDireccion(administrador.getDireccion());
-            administradorDto.setUsuario(administrador.getUsuario());
-            administradorDto.setPassword(administrador.getPassword());
-            return administradorDto;
-
+            AdministradorDTO administradorDTO = new AdministradorDTO();
+            administradorDTO.setNombre(administrador.getNombre());
+            administradorDTO.setApellido(administrador.getApellido());
+            administradorDTO.setCedula(administrador.getCedula());
+            administradorDTO.setDireccion(administrador.getDireccion());
+            administradorDTO.setUsuario(administrador.getUsuario());
+            administradorDTO.setPassword(administrador.getPassword());
+            return administradorDTO;
         }
         return null;
-
     }
 
-        @Override
-    public Usuario usuarioDtoToUsuario(UsuarioDTO usuarioDto) {
-        if (usuarioDto instanceof VendedorDTO){
-        VendedorDTO vendedorDTO = (VendedorDTO) usuarioDto;
-        Vendedor vendedor = new Vendedor();
-        vendedor.setNombre(vendedorDTO.getNombre());
-        vendedor.setApellido(vendedorDTO.getApellido());
-        vendedor.setCedula(vendedorDTO.getCedula());
-        vendedor.setDireccion(vendedorDTO.getDireccion());
-        vendedor.setUsuario(vendedorDTO.getUsuario());
-        vendedor.setPassword(vendedorDTO.getPassword());
+    @Override
+    public Usuario usuarioDTOToUsuario(UsuarioDTO usuarioDTO) {
+        if (usuarioDTO instanceof VendedorDTO) {
+            VendedorDTO vendedorDTO = (VendedorDTO) usuarioDTO;
+            Vendedor vendedor = new Vendedor();
+            vendedor.setNombre(vendedorDTO.getNombre());
+            vendedor.setApellido(vendedorDTO.getApellido());
+            vendedor.setCedula(vendedorDTO.getCedula());
+            vendedor.setDireccion(vendedorDTO.getDireccion());
+            vendedor.setUsuario(vendedorDTO.getUsuario());
+            vendedor.setPassword(vendedorDTO.getPassword());
 
-            vendedor.setListaProductos(productosDtoToProductos(modelFactory.getListaProductosDto(vendedorDTO.getIdVendedor())));
-            vendedor.setMuro(muroDtoToMuro(vendedorDTO.getMuro()));
+            vendedor.setListaProductos(productosDTOToProductos(modelFactory.getListaProductosDTO(vendedorDTO.getIdVendedor())));
+            vendedor.setMuro(muroDTOToMuro(vendedorDTO.getMuro()));
             vendedor.setListaContactos(modelFactory.getListaContactos(vendedorDTO.getIdVendedor()));
-        return vendedor;
-    } else if (usuarioDto instanceof AdministradorDTO) {
-            AdministradorDTO administradorDTO = (AdministradorDTO) usuarioDto;
+            return vendedor;
+        } else if (usuarioDTO instanceof AdministradorDTO) {
+            AdministradorDTO administradorDTO = (AdministradorDTO) usuarioDTO;
             Administrador administrador = new Administrador();
             administrador.setNombre(administradorDTO.getNombre());
             administrador.setApellido(administradorDTO.getApellido());
@@ -67,270 +65,262 @@ public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
             administrador.setPassword(administradorDTO.getPassword());
             return administrador;
         }
-            return null;}
+        return null;
+    }
 
     @Override
-    public Publicacion publicacionDtoToPublicacion(PublicacionDTO publicacionDto) {
-
+    public Publicacion publicacionDTOToPublicacion(PublicacionDTO publicacionDTO) {
         Publicacion publicacion = new Publicacion();
-        publicacion.setFechaPublicacion(publicacionDto.getFechaPublicacion());
-        publicacion.setHoraPublicacion(publicacionDto.getHoraPublicacion());
-        publicacion.setProducto(productoDtoToProducto(publicacionDto.getProducto()));
-        publicacion.setDescripcion(publicacionDto.getDescripcion());
+        publicacion.setFechaPublicacion(publicacionDTO.getFechaPublicacion());
+        publicacion.setHoraPublicacion(publicacionDTO.getHoraPublicacion());
+        publicacion.setProducto(productoDTOToProducto(publicacionDTO.getProducto()));
+        publicacion.setDescripcion(publicacionDTO.getDescripcion());
 
-        publicacion.setListaComentarios(modelFactory.getListaComentarios(publicacionDto.getIdVendedor(), publicacionDto));
-        publicacion.setListaMegustas(modelFactory.getListaMeGusta(publicacionDto.getIdVendedor(), publicacionDto));
+        publicacion.setListaComentarios(modelFactory.getListaComentarios(publicacionDTO.getIdVendedor(), publicacionDTO));
+        publicacion.setListaMegustas(modelFactory.getListaMeGusta(publicacionDTO.getIdVendedor(), publicacionDTO));
         return publicacion;
     }
 
     @Override
-    public PublicacionDTO publicacionToPublicacionDto(Publicacion publicacion) {
-        PublicacionDTO publicacionDto = new PublicacionDTO();
-        publicacionDto.setFechaPublicacion(publicacion.getFechaPublicacion());
-        publicacionDto.setHoraPublicacion(publicacion.getHoraPublicacion());
-        publicacionDto.setProducto(productoToProductoDto(publicacion.getProducto()));
-        publicacionDto.setDescripcion(publicacion.getDescripcion());
-        return publicacionDto;
-
+    public PublicacionDTO publicacionToPublicacionDTO(Publicacion publicacion) {
+        PublicacionDTO publicacionDTO = new PublicacionDTO();
+        publicacionDTO.setFechaPublicacion(publicacion.getFechaPublicacion());
+        publicacionDTO.setHoraPublicacion(publicacion.getHoraPublicacion());
+        publicacionDTO.setProducto(productoToProductoDTO(publicacion.getProducto()));
+        publicacionDTO.setDescripcion(publicacion.getDescripcion());
+        return publicacionDTO;
     }
 
     @Override
-    public ProductoDTO productoToProductoDto(Producto producto) {
-        ProductoDTO productoDto = new ProductoDTO();
-        productoDto.setNombre(producto.getNombre());
-        productoDto.setCategoria(producto.getCategoria());
-        productoDto.setPrecio(producto.getPrecio());
+    public ProductoDTO productoToProductoDTO(Producto producto) {
+        ProductoDTO productoDTO = new ProductoDTO();
+        productoDTO.setNombre(producto.getNombre());
+        productoDTO.setCategoria(producto.getCategoria());
+        productoDTO.setPrecio(producto.getPrecio());
         producto.setEstado(producto.getEstado());
         producto.setImagen(producto.getImagen());
-        return productoDto;
+        return productoDTO;
     }
 
     @Override
-    public Producto productoDtoToProducto(ProductoDTO productoDto) {
+    public Producto productoDTOToProducto(ProductoDTO productoDTO) {
         Producto producto = new Producto();
-        producto.setNombre(productoDto.getNombre());
-        producto.setCategoria(productoDto.getCategoria());
-        producto.setPrecio(productoDto.getPrecio());
-        producto.setEstado(productoDto.getEstado());
-        producto.setImagen(productoDto.getImagen());
+        producto.setNombre(productoDTO.getNombre());
+        producto.setCategoria(productoDTO.getCategoria());
+        producto.setPrecio(productoDTO.getPrecio());
+        producto.setEstado(productoDTO.getEstado());
+        producto.setImagen(productoDTO.getImagen());
         return producto;
     }
 
     @Override
-    public Mensaje mesajeDtoToMensaje(MensajeDTO mensajeDto) {
+    public Mensaje mensajeDTOToMensaje(MensajeDTO mensajeDTO) {
         Mensaje mensaje = new Mensaje();
-        mensaje.setMensaje(mensajeDto.getMensaje());
-        mensaje.setUsuario(usuarioDtoToUsuario(mensajeDto.getUsuario()));
-        mensaje.setFecha(mensajeDto.getFecha());
-        mensaje.setHora(mensajeDto.getHora());
+        mensaje.setMensaje(mensajeDTO.getMensaje());
+        mensaje.setUsuario(usuarioDTOToUsuario(mensajeDTO.getUsuario()));
+        mensaje.setFecha(mensajeDTO.getFecha());
+        mensaje.setHora(mensajeDTO.getHora());
         return mensaje;
     }
 
     @Override
-    public MensajeDTO mensajeToMensajeDto(Mensaje mensaje) {
-        MensajeDTO mensajeDto = new MensajeDTO();
-        mensajeDto.setMensaje(mensaje.getMensaje());
-        mensajeDto.setUsuario(usuarioToUsuarioDto(mensaje.getUsuario()));
-        mensajeDto.setFecha(mensaje.getFecha());
-        mensajeDto.setHora(mensaje.getHora());
-        return mensajeDto;
+    public MensajeDTO mensajeToMensajeDTO(Mensaje mensaje) {
+        MensajeDTO mensajeDTO = new MensajeDTO();
+        mensajeDTO.setMensaje(mensaje.getMensaje());
+        mensajeDTO.setUsuario(usuarioToUsuarioDTO(mensaje.getUsuario()));
+        mensajeDTO.setFecha(mensaje.getFecha());
+        mensajeDTO.setHora(mensaje.getHora());
+        return mensajeDTO;
     }
 
     @Override
-    public Comentario comentarioDtoToComentario(ComentarioDTO comentarioDTO) {
+    public Comentario comentarioDTOToComentario(ComentarioDTO comentarioDTO) {
         Comentario comentario = new Comentario();
         comentario.setFecha(comentarioDTO.getFecha());
         comentario.setHora(comentarioDTO.getHora());
         comentario.setMensaje(comentarioDTO.getMensaje());
-        comentario.setUsuario(usuarioDtoToUsuario(comentarioDTO.getUsuario()));
+        comentario.setUsuario(usuarioDTOToUsuario(comentarioDTO.getUsuario()));
         comentario.setNumMeGustas(comentarioDTO.getNumMeGustas());
         return comentario;
     }
 
     @Override
-    public ComentarioDTO comentarioToComentarioDto(Comentario comentario) {
-        ComentarioDTO comentarioDto = new ComentarioDTO();
-        comentarioDto.setFecha(comentario.getFecha());
-        comentarioDto.setHora(comentario.getHora());
-        comentarioDto.setMensaje(comentario.getMensaje());
-        comentarioDto.setUsuario(usuarioToUsuarioDto(comentario.getUsuario()));
-        comentarioDto.setNumMeGustas(comentario.getNumMeGustas());
-        return comentarioDto;
+    public ComentarioDTO comentarioToComentarioDTO(Comentario comentario) {
+        ComentarioDTO comentarioDTO = new ComentarioDTO();
+        comentarioDTO.setFecha(comentario.getFecha());
+        comentarioDTO.setHora(comentario.getHora());
+        comentarioDTO.setMensaje(comentario.getMensaje());
+        comentarioDTO.setUsuario(usuarioToUsuarioDTO(comentario.getUsuario()));
+        comentarioDTO.setNumMeGustas(comentario.getNumMeGustas());
+        return comentarioDTO;
     }
 
     @Override
-    public Muro muroDtoToMuro(MuroDTO muroDto) {
+    public Muro muroDTOToMuro(MuroDTO muroDTO) {
         Muro muro = new Muro();
-        muro.setListaChats(ListaChatsDtoToListaChats(muroDto.getListaChats()));
-        muro.setListaPublicaciones(publicacionesDtoToPublicaciones(muroDto.getListaPublicaciones()));
+        muro.setListaChats(ListaChatsDTOToListaChats(muroDTO.getListaChats()));
+        muro.setListaPublicaciones(publicacionesDTOToPublicaciones(muroDTO.getListaPublicaciones()));
         return muro;
     }
 
-    private List<Chat> ListaChatsDtoToListaChats(List<ChatDTO> listaChatsDto) {
+    private List<Chat> ListaChatsDTOToListaChats(List<ChatDTO> listaChatsDTO) {
         List<Chat> listaChats = new ArrayList<>();
-        for (ChatDTO chatDto : listaChatsDto) {
-            listaChats.add(chatDtoToChat(chatDto));
+        for (ChatDTO chatDTO : listaChatsDTO) {
+            listaChats.add(chatDTOToChat(chatDTO));
         }
         return listaChats;
-
     }
 
-    private Chat chatDtoToChat(ChatDTO chatDto) {
+    private Chat chatDTOToChat(ChatDTO chatDTO) {
         Chat chat = new Chat();
-        chat.setMensajes(mensajesDtoToMensajes(chatDto.getListaMensajes()));
-        chat.setUsuarios(usuariosDtoToUsuarios(chatDto.getListaUsuarios()));
+        chat.setMensajes(mensajesDTOToMensajes(chatDTO.getListaMensajes()));
+        chat.setUsuarios(usuariosDTOToUsuarios(chatDTO.getListaUsuarios()));
         return chat;
     }
 
-    private List<Usuario> usuariosDtoToUsuarios(List<UsuarioDTO> listaUsuariosDto) {
+    private List<Usuario> usuariosDTOToUsuarios(List<UsuarioDTO> listaUsuariosDTO) {
         List<Usuario> listaUsuarios = new ArrayList<>();
-        for (UsuarioDTO usuarioDto : listaUsuariosDto) {
-            listaUsuarios.add(usuarioDtoToUsuario(usuarioDto));
+        for (UsuarioDTO usuarioDTO : listaUsuariosDTO) {
+            listaUsuarios.add(usuarioDTOToUsuario(usuarioDTO));
         }
         return listaUsuarios;
-
     }
 
     @Override
-    public MuroDTO muroToMuroDto(Muro muro) {
-        MuroDTO muroDto = new MuroDTO();
-        muroDto.setListaChats(listaChatsToListaChatsDto(muro.getListaChats()));
-        muroDto.setListaPublicaciones(publicacionesToPublicacionesDto(modelFactory.getListaPublicaciones(muro.getIdVendedor())));
+    public MuroDTO muroToMuroDTO(Muro muro) {
+        MuroDTO muroDTO = new MuroDTO();
+        muroDTO.setListaChats(listaChatsToListaChatsDTO(muro.getListaChats()));
+        muroDTO.setListaPublicaciones(publicacionesToPublicacionesDTO(modelFactory.getListaPublicaciones(muro.getIdVendedor())));
         return null;
     }
 
-    private List<ChatDTO> listaChatsToListaChatsDto(List<Chat> listaChats) {
-        List<ChatDTO> listaChatsDto = new ArrayList<>();
+    private List<ChatDTO> listaChatsToListaChatsDTO(List<Chat> listaChats) {
+        List<ChatDTO> listaChatsDTO = new ArrayList<>();
         for (Chat chat : listaChats) {
-            listaChatsDto.add(chatToChatDto(chat));
+            listaChatsDTO.add(chatToChatDTO(chat));
         }
-        return listaChatsDto;
-
+        return listaChatsDTO;
     }
 
-    private ChatDTO chatToChatDto(Chat chat) {
-        ChatDTO chatDto = new ChatDTO();
-        chatDto.setListaUsuarios(usuariosToUsuariosDto(chat.getUsuarios()));
-        chatDto.setListaMensajes(mensajeToMensajesDto(chat.getMensajes()));
-        return chatDto;
+    private ChatDTO chatToChatDTO(Chat chat) {
+        ChatDTO chatDTO = new ChatDTO();
+        chatDTO.setListaUsuarios(usuariosToUsuariosDTO(chat.getUsuarios()));
+        chatDTO.setListaMensajes(mensajeToMensajesDTO(chat.getMensajes()));
+        return chatDTO;
     }
 
-    private List<UsuarioDTO> usuariosToUsuariosDto(List<Usuario> usuarios) {
-        List<UsuarioDTO> usuariosDto = new ArrayList<>();
+    private List<UsuarioDTO> usuariosToUsuariosDTO(List<Usuario> usuarios) {
+        List<UsuarioDTO> usuariosDTO = new ArrayList<>();
         for (Usuario usuario : usuarios) {
-            usuarioToUsuarioDto(usuario);
-            usuariosDto.add(usuarioToUsuarioDto(usuario));
+            usuariosDTO.add(usuarioToUsuarioDTO(usuario));
         }
-        return usuariosDto;
+        return usuariosDTO;
     }
 
     @Override
-    public List<VendedorDTO> VendedoresToVendedoresDto(List<Vendedor> vendedores) {
-        List<VendedorDTO> vendedoresDto = new ArrayList<>();
+    public List<VendedorDTO> VendedoresToVendedoresDTO(List<Vendedor> vendedores) {
+        List<VendedorDTO> vendedoresDTO = new ArrayList<>();
         for (Vendedor vendedor : vendedores) {
-            VendedorDTO vendedorDto = new VendedorDTO();
-            vendedorDto.setNombre(vendedor.getNombre());
-            vendedorDto.setApellido(vendedor.getApellido());
-            vendedorDto.setCedula(vendedor.getCedula());
-            vendedorDto.setDireccion(vendedor.getDireccion());
-            vendedorDto.setUsuario(vendedor.getUsuario());
-            vendedorDto.setPassword(vendedor.getPassword());
-            vendedoresDto.add(vendedorDto);
-
+            VendedorDTO vendedorDTO = new VendedorDTO();
+            vendedorDTO.setNombre(vendedor.getNombre());
+            vendedorDTO.setApellido(vendedor.getApellido());
+            vendedorDTO.setCedula(vendedor.getCedula());
+            vendedorDTO.setDireccion(vendedor.getDireccion());
+            vendedorDTO.setUsuario(vendedor.getUsuario());
+            vendedorDTO.setPassword(vendedor.getPassword());
+            vendedoresDTO.add(vendedorDTO);
         }
-        return vendedoresDto;
+        return vendedoresDTO;
     }
 
     @Override
-    public List<Vendedor> VendedoresDtoToVendedores(List<VendedorDTO> vendedoresDto) {
+    public List<Vendedor> VendedoresDTOToVendedores(List<VendedorDTO> vendedoresDTO) {
         List<Vendedor> vendedores = new ArrayList<>();
-        for (VendedorDTO vendedorDto : vendedoresDto) {
+        for (VendedorDTO vendedorDTO : vendedoresDTO) {
             Vendedor vendedor = new Vendedor();
-            vendedor.setNombre(vendedorDto.getNombre());
-            vendedor.setApellido(vendedorDto.getApellido());
-            vendedor.setCedula(vendedorDto.getCedula());
-            vendedor.setDireccion(vendedorDto.getDireccion());
-            vendedor.setUsuario(vendedorDto.getUsuario());
-            vendedor.setPassword(vendedorDto.getPassword());
+            vendedor.setNombre(vendedorDTO.getNombre());
+            vendedor.setApellido(vendedorDTO.getApellido());
+            vendedor.setCedula(vendedorDTO.getCedula());
+            vendedor.setDireccion(vendedorDTO.getDireccion());
+            vendedor.setUsuario(vendedorDTO.getUsuario());
+            vendedor.setPassword(vendedorDTO.getPassword());
 
-            vendedor.setListaProductos(productosDtoToProductos(modelFactory.getListaProductosDto(vendedorDto.getIdVendedor())));
-            vendedor.setMuro(muroDtoToMuro(vendedorDto.getMuro()));
-            vendedor.setListaContactos(modelFactory.getListaContactos(vendedorDto.getIdVendedor()));
-
-
+            vendedor.setListaProductos(productosDTOToProductos(modelFactory.getListaProductosDTO(vendedorDTO.getIdVendedor())));
+            vendedor.setMuro(muroDTOToMuro(vendedorDTO.getMuro()));
+            vendedor.setListaContactos(modelFactory.getListaContactos(vendedorDTO.getIdVendedor()));
         }
         return vendedores;
     }
 
     @Override
-    public List<PublicacionDTO> publicacionesToPublicacionesDto(List<Publicacion> publicaciones) {
-        List<PublicacionDTO> publicacionesDto = new ArrayList<>();
+    public List<PublicacionDTO> publicacionesToPublicacionesDTO(List<Publicacion> publicaciones) {
+        List<PublicacionDTO> publicacionesDTO = new ArrayList<>();
         for (Publicacion publicacion : publicaciones) {
-            publicacionesDto.add(publicacionToPublicacionDto(publicacion));
+            publicacionesDTO.add(publicacionToPublicacionDTO(publicacion));
         }
-        return publicacionesDto;
+        return publicacionesDTO;
     }
 
     @Override
-    public List<Publicacion> publicacionesDtoToPublicaciones(List<PublicacionDTO> publicacionesDto) {
+    public List<Publicacion> publicacionesDTOToPublicaciones(List<PublicacionDTO> publicacionesDTO) {
         List<Publicacion> publicaciones = new ArrayList<>();
-        for (PublicacionDTO publicacionDto : publicacionesDto) {
-            publicaciones.add(publicacionDtoToPublicacion(publicacionDto));
+        for (PublicacionDTO publicacionDTO : publicacionesDTO) {
+            publicaciones.add(publicacionDTOToPublicacion(publicacionDTO));
         }
         return publicaciones;
     }
 
     @Override
-    public List<ProductoDTO> productosToProductosDto(List<Producto> productos) {
-        List<ProductoDTO> productosDto = new ArrayList<>();
+    public List<ProductoDTO> productosToProductosDTO(List<Producto> productos) {
+        List<ProductoDTO> productosDTO = new ArrayList<>();
         for (Producto producto : productos) {
-            productosDto.add(productoToProductoDto(producto));
+            productosDTO.add(productoToProductoDTO(producto));
         }
-        return productosDto;
+        return productosDTO;
     }
 
     @Override
-    public List<Producto> productosDtoToProductos(List<ProductoDTO> productosDto) {
+    public List<Producto> productosDTOToProductos(List<ProductoDTO> productosDTO) {
         List<Producto> productos = new ArrayList<>();
-        for (ProductoDTO productoDto : productosDto) {
-            productos.add(productoDtoToProducto(productoDto));
+        for (ProductoDTO productoDTO : productosDTO) {
+            productos.add(productoDTOToProducto(productoDTO));
         }
         return productos;
     }
 
     @Override
-    public List<Comentario> comentariosDtoToComentarios(List<ComentarioDTO> comentariosDto) {
+    public List<Comentario> comentariosDTOToComentarios(List<ComentarioDTO> comentariosDTO) {
         List<Comentario> comentarios = new ArrayList<>();
-        for (ComentarioDTO comentarioDto : comentariosDto) {
-            comentarios.add(comentarioDtoToComentario(comentarioDto));
+        for (ComentarioDTO comentarioDTO : comentariosDTO) {
+            comentarios.add(comentarioDTOToComentario(comentarioDTO));
         }
         return comentarios;
     }
 
     @Override
-    public List<ComentarioDTO> comentariosToComentariosDto(List<Comentario> comentarios) {
-        List<ComentarioDTO> comentariosDto = new ArrayList<>();
+    public List<ComentarioDTO> comentariosToComentariosDTO(List<Comentario> comentarios) {
+        List<ComentarioDTO> comentariosDTO = new ArrayList<>();
         for (Comentario comentario : comentarios) {
-            comentariosDto.add(comentarioToComentarioDto(comentario));
+            comentariosDTO.add(comentarioToComentarioDTO(comentario));
         }
-        return comentariosDto;
+        return comentariosDTO;
     }
 
     @Override
-    public List<Mensaje> mensajesDtoToMensajes(List<MensajeDTO> mensajesDto) {
+    public List<Mensaje> mensajesDTOToMensajes(List<MensajeDTO> mensajesDTO) {
         List<Mensaje> mensajes = new ArrayList<>();
-        for (MensajeDTO mensajeDto : mensajesDto) {
-            mensajes.add(mesajeDtoToMensaje(mensajeDto));
+        for (MensajeDTO mensajeDTO : mensajesDTO) {
+            mensajes.add(mensajeDTOToMensaje(mensajeDTO));
         }
         return mensajes;
     }
 
     @Override
-    public List<MensajeDTO> mensajeToMensajesDto(List<Mensaje> mensajes) {
-        List<MensajeDTO> mensajesDto = new ArrayList<>();
+    public List<MensajeDTO> mensajeToMensajesDTO(List<Mensaje> mensajes) {
+        List<MensajeDTO> mensajesDTO = new ArrayList<>();
         for (Mensaje mensaje : mensajes) {
-            mensajesDto.add(mensajeToMensajeDto(mensaje));
+            mensajesDTO.add(mensajeToMensajeDTO(mensaje));
         }
-        return mensajesDto;
+        return mensajesDTO;
     }
 }

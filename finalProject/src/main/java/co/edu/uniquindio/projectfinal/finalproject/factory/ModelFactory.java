@@ -55,7 +55,7 @@ public class ModelFactory implements IModelFactoryServices {
     public List<ProductoDTO> getListaProductosDisponibles(UsuarioDTO usuario) {
         return List.of();
     }
-    
+
     @Override
     public boolean agregarPublicacion(PublicacionDTO publicacion, String id) {
         Publicacion p = new Publicacion();
@@ -63,14 +63,13 @@ public class ModelFactory implements IModelFactoryServices {
         p.setFechaPublicacion(publicacion.getFechaPublicacion());
         p.setIdVendedor(publicacion.getIdVendedor());
         p.setHoraPublicacion(publicacion.getHoraPublicacion());
-        p.setProducto(mapping.productoDtoToProducto(publicacion.getProducto()));
+        p.setProducto(mapping.productoDTOToProducto(publicacion.getProducto()));
 
         if (marketPlace.crearPublicacion(p, id)){
             return true;
-        }else {
+        } else {
             return false;
         }
-
     }
 
     @Override
@@ -94,12 +93,12 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public List<ProductoDTO> getListaProductosDto(String id) {
-        return mapping.productosToProductosDto(marketPlace.getListaProductosVendedor(id));
+    public List<ProductoDTO> getListaProductosDTO(String id) {
+        return mapping.productosToProductosDTO(marketPlace.getListaProductosVendedor(id));
     }
 
     @Override
-    public List<VendedorDTO> getListaContactosDto(String id) {
+    public List<VendedorDTO> getListaContactosDTO(String id) {
         return List.of();
     }
 
@@ -114,7 +113,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public List<ComentarioDTO> getListaComentariosDto(String idVendedor, PublicacionDTO publicacion) {
+    public List<ComentarioDTO> getListaComentariosDTO(String idVendedor, PublicacionDTO publicacion) {
         return List.of();
     }
 
@@ -124,7 +123,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public List<VendedorDTO> getListaMeGustaDto(String idVendedor, PublicacionDTO dto) {
+    public List<VendedorDTO> getListaMeGustaDTO(String idVendedor, PublicacionDTO dto) {
         return List.of();
     }
 
@@ -134,7 +133,7 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public List<PublicacionDTO> getListaPublicacionesDto(String idVendedor) {
+    public List<PublicacionDTO> getListaPublicacionesDTO(String idVendedor) {
         return List.of();
     }
 
@@ -164,37 +163,37 @@ public class ModelFactory implements IModelFactoryServices {
 
         //Creacion de productos
         Producto producto1 = new Producto("Servicio Guardaespaldas", "Servicio privado", Estado.PUBLICADO, 200);
-        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024","Equipación deportiva",Estado.PUBLICADO, 299950);
-        Producto producto3 = new Producto("Bicibleta usada","Artículos usados",Estado.PUBLICADO, 20000);
-        Producto producto4 = new Producto("Mano de guineo verde","Alimentos",Estado.PUBLICADO, 2000);
-        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca", "Artículas deportivos",Estado.VENDIDO,4500000);
+        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "Equipación deportiva", Estado.PUBLICADO, 299950);
+        Producto producto3 = new Producto("Bicicleta usada", "Artículos usados", Estado.PUBLICADO, 20000);
+        Producto producto4 = new Producto("Mano de guineo verde", "Alimentos", Estado.PUBLICADO, 2000);
+        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca", "Artículos deportivos", Estado.VENDIDO, 4500000);
 
         //Creacion de publicaciones
-        Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
-        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1),LocalTime.now(),producto2,"Camiseta Local tipo jugador del mejor club de Colomboia. Disponible en todas las tallas de hombre, mujer y feministas", "00002");
-        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2),LocalTime.now(),producto3,"Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D", "00003");
-        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3),LocalTime.now(),producto4,"Deliciosa mano de guineo verde perfecta pa un cayeye. 1 mano por 2k, 3 manos en 5k pa ti", "00004");
-        Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4),LocalTime.now(),producto5,"El mejor balón que se ha creado en la historia del fútbol. Firmada por Camilo Zúñiga", "00005");
+        Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1, "Servicio privado de seguridad 5 estrellas y 24 horas. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabib). Precio negociable", "00001");
+        Publicacion publicacion2 = new Publicacion(LocalDate.now().plusDays(1), LocalTime.now(), producto2, "Camiseta Local tipo jugador del mejor club de Colombia. Disponible en todas las tallas de hombre, mujer y feministas", "00002");
+        Publicacion publicacion3 = new Publicacion(LocalDate.now().plusDays(2), LocalTime.now(), producto3, "Vendo mi bicicleta con 2 semanas de uso por necesidad, le hacen falta las ruedas pero ella sirve. Precio negociable =D", "00003");
+        Publicacion publicacion4 = new Publicacion(LocalDate.now().plusDays(3), LocalTime.now(), producto4, "Deliciosa mano de guineo verde perfecta para un cayeye. 1 mano por 2k, 3 manos en 5k pa ti", "00004");
+        Publicacion publicacion5 = new Publicacion(LocalDate.now().plusDays(4), LocalTime.now(), producto5, "El mejor balón que se ha creado en la historia del fútbol. Firmado por Camilo Zúñiga", "00005");
 
         //Creacion de vendedores
         Vendedor vendedor1 = new Vendedor("Miguel", "Durant", "00001", "Cambia a diario", "MigueMC", "12345", "01");
         Vendedor vendedor2 = new Vendedor("Juan", "Chica", "00002", "Bosconia", "JuanMC", "12345", "02");
         Vendedor vendedor3 = new Vendedor("Yulieth", "Cazanova", "00003", "Frente a la U", "Yulie", "12345", "03");
-        Vendedor vendedor4 = new Vendedor("Yonaiker", "Ceballos", "00004", "Atrás de la u", "Yoni", "12345", "04");
-        Vendedor vendedor5 = new Vendedor("vendedor5","apellido5","00005","DirecciónX","user5","12345","05");
-        Vendedor vendedor6 = new Vendedor("vendedor6","apellido6","00006","DirecciónX","user6","12345","06");
-        Vendedor vendedor7 = new Vendedor("vendedor7","apellido7","00007","DirecciónX","user7","12345","07");
-        Vendedor vendedor8 = new Vendedor("vendedor8", "apellido8","00008","DirecciónX","user8","12345","08");
-        Vendedor vendedor9 = new Vendedor("vendedor9","apellido9","00009","DirecciónX","user9","12345","09");
-        Vendedor vendedor10 = new Vendedor("vendedor10", "apellido10","000010","DirecciónX","user10","12345","10");
-        Vendedor vendedor11 = new Vendedor("vendedor11","apellido11","000011","DirecciónX","user11","12345","11");
+        Vendedor vendedor4 = new Vendedor("Yonaiker", "Ceballos", "00004", "Atrás de la U", "Yoni", "12345", "04");
+        Vendedor vendedor5 = new Vendedor("vendedor5", "apellido5", "00005", "DirecciónX", "user5", "12345", "05");
+        Vendedor vendedor6 = new Vendedor("vendedor6", "apellido6", "00006", "DirecciónX", "user6", "12345", "06");
+        Vendedor vendedor7 = new Vendedor("vendedor7", "apellido7", "00007", "DirecciónX", "user7", "12345", "07");
+        Vendedor vendedor8 = new Vendedor("vendedor8", "apellido8", "00008", "DirecciónX", "user8", "12345", "08");
+        Vendedor vendedor9 = new Vendedor("vendedor9", "apellido9", "00009", "DirecciónX", "user9", "12345", "09");
+        Vendedor vendedor10 = new Vendedor("vendedor10", "apellido10", "000010", "DirecciónX", "user10", "12345", "10");
+        Vendedor vendedor11 = new Vendedor("vendedor11", "apellido11", "000011", "DirecciónX", "user11", "12345", "11");
 
         //Creacion de administradores
-        Administrador admin = new Administrador("Admin", "istrador", "00000", "Privada", "admin", "12345","00");
+        Administrador admin = new Administrador("Admin", "istrador", "00000", "Privada", "admin", "12345", "00");
 
         //Creacion de comentarios
-        Comentario comentario = new Comentario(vendedor4, LocalDate.now(), LocalTime.now(),"Precio?");
-        Comentario comentario2 = new Comentario(vendedor2,LocalDate.now().plusDays(2),LocalTime.now(),"Yo conozco donde lo venden más barato");
+        Comentario comentario = new Comentario(vendedor4, LocalDate.now(), LocalTime.now(), "¿Precio?");
+        Comentario comentario2 = new Comentario(vendedor2, LocalDate.now().plusDays(2), LocalTime.now(), "Yo conozco donde lo venden más barato");
 
         //Agregar comentario a publicaciones
         publicacion4.agregarComentario(comentario);
@@ -222,21 +221,22 @@ public class ModelFactory implements IModelFactoryServices {
         vendedor2.agregarProducto(producto4);
 
         //Relacionar contactos bilateralmente
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor2);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor3);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor4);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor5);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor6);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor7);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor8);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor9);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor10);
-        marketPlace1.agregarContactosEntreSi(vendedor1,vendedor11);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor2);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor3);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor4);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor5);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor6);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor7);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor8);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor9);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor10);
+        marketPlace1.agregarContactosEntreSi(vendedor1, vendedor11);
 
-        //Agregar distintos objetos al marketplace automaticamente
-        List<Object> parametros = Arrays.asList(vendedor1,vendedor2,admin);
+        //Agregar distintos objetos al marketplace automáticamente
+        List<Object> parametros = Arrays.asList(vendedor1, vendedor2, admin);
         parametros.forEach(marketPlace1::agregarAutomatico);
 
         marketPlace = marketPlace1;
     }
+
 }
