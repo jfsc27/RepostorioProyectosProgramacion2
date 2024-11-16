@@ -28,7 +28,7 @@ public class ProductoDTO {
         this.nombre = nombre;
     }
 
-    public Image getImagen() {
+    public  void getImagen(){
         return imagen;
     }
 

@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Muro {
+    private String idVendedor;
     private List<Publicacion> listaPublicaciones;
     private List<Chat> listaChats;
 
-    public Muro(){
+    public Muro(String idVendedor) {
+        this.idVendedor = idVendedor;
         listaPublicaciones = new ArrayList<Publicacion>();
         listaChats = new ArrayList<Chat>();
     }
+
+    public Muro() {
+
+    }
+
     public void agregarPublicacion(Publicacion publicacion){
         listaPublicaciones.add(publicacion);
     }
@@ -28,6 +35,10 @@ public class Muro {
     }
     public void setListaPublicaciones(List<Publicacion> listaPublicaciones) {
         this.listaPublicaciones = listaPublicaciones;
+    }
+
+    public String getIdVendedor() {
+        return idVendedor;
     }
 }
 

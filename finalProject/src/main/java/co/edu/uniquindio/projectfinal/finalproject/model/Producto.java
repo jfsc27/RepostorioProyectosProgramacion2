@@ -10,9 +10,20 @@ public class Producto implements IProducto {
     private Estado estado;
     private double precio;
 
-    public Producto(String nombre, String rutaImagen, String categoria, Estado estado, double precio) {
+    public Producto(String nombre, Image imagen, String categoria, Estado estado, double precio) {
         this.nombre = nombre;
-        this.imagen = cargarImagen(rutaImagen);
+        this.imagen = imagen;
+        this.categoria = categoria;
+        this.estado = estado;
+        this.precio = precio;
+    }
+
+    public Producto() {
+
+    }
+
+    public Producto(String nombre, String categoria, Estado estado, double precio) {
+        this.nombre = nombre;
         this.categoria = categoria;
         this.estado = estado;
         this.precio = precio;
@@ -41,8 +52,8 @@ public class Producto implements IProducto {
         return imagen;
     }
 
-    public void setImagen(String rutaImagen) {
-        this.imagen = cargarImagen(rutaImagen);
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
     }
 
     public String getCategoria() {

@@ -14,6 +14,8 @@ public class ModelFactory implements IModelFactoryServices {
     private static ModelFactory instance;
     private static MarketPlace marketPlace;
     private static MarketPlaceMappingImpl mapping;
+    private PublicacionDTO publicacionDto;
+    private String id;
 
     private ModelFactory() {
         inicializarDatos();
@@ -53,17 +55,17 @@ public class ModelFactory implements IModelFactoryServices {
     public List<ProductoDTO> getListaProductosDisponibles(UsuarioDTO usuario) {
         return List.of();
     }
-
+    
     @Override
-    public boolean agregarPublicacion(PublicacionDTO publicacionDto, String id){
-        Publicacion publi = new Publicacion();
-        publi.setDescripcion(publicacionDto.getDescripcion());
-        publi.setFechaPublicacion(publicacionDto.getFechaPublicacion());
-        publi.setIdVendedor(publicacionDto.getIdVendedor());
-        publi.setHoraPublicacion(publicacionDto.getHoraPublicacion());
-        publi.setProducto(mapping.productoDtoToProducto(publicacionDto.getProducto()));
+    public boolean agregarPublicacion(PublicacionDTO publicacion, String id) {
+        Publicacion p = new Publicacion();
+        p.setDescripcion(publicacion.getDescripcion());
+        p.setFechaPublicacion(publicacion.getFechaPublicacion());
+        p.setIdVendedor(publicacion.getIdVendedor());
+        p.setHoraPublicacion(publicacion.getHoraPublicacion());
+        p.setProducto(mapping.productoDtoToProducto(publicacion.getProducto()));
 
-        if (marketPlace.crearPublicacion(publi, id)){
+        if (marketPlace.crearPublicacion(p, id)){
             return true;
         }else {
             return false;
@@ -161,11 +163,11 @@ public class ModelFactory implements IModelFactoryServices {
         MarketPlace marketPlace1 = new MarketPlace();
 
         //Creacion de productos
-        Producto producto1 = new Producto("Servicio Guardaespaldas", "", "Servicio privado", Estado.PUBLICADO, 200);
-        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024", "","Equipación deportiva",Estado.PUBLICADO, 299950);
-        Producto producto3 = new Producto("Bicibleta usada", "","Artículos usados",Estado.PUBLICADO, 20000);
-        Producto producto4 = new Producto("Mano de guineo verde", "","Alimentos",Estado.PUBLICADO, 2000);
-        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca","", "Artículas deportivos",Estado.VENDIDO,4500000);
+        Producto producto1 = new Producto("Servicio Guardaespaldas", "Servicio privado", Estado.PUBLICADO, 200);
+        Producto producto2 = new Producto("Camiseta Local JUNIOR FC 2024","Equipación deportiva",Estado.PUBLICADO, 299950);
+        Producto producto3 = new Producto("Bicibleta usada","Artículos usados",Estado.PUBLICADO, 20000);
+        Producto producto4 = new Producto("Mano de guineo verde","Alimentos",Estado.PUBLICADO, 2000);
+        Producto producto5 = new Producto("Pelota de fútbol adidas Brazuca", "Artículas deportivos",Estado.VENDIDO,4500000);
 
         //Creacion de publicaciones
         Publicacion publicacion1 = new Publicacion(LocalDate.now(), LocalTime.now(), producto1,"Servicio privado de seguidad 5 estrellas y 24 hpras. Cuenta con 2 guardaespaldas expertos en MMA para protegerlo a usted y su familia (uno de ellos se cree capaz de ganarle una pelea a Khabid). Precio negociable", "00001");
@@ -199,8 +201,8 @@ public class ModelFactory implements IModelFactoryServices {
         publicacion1.agregarComentario(comentario2);
 
         //Creacion de muros
-        Muro muro = new Muro();
-        Muro muro2 = new Muro();
+        Muro muro = new Muro("00001");
+        Muro muro2 = new Muro("00002");
 
         //Agregar publicaciones al muro
         muro.agregarPublicacion(publicacion1);

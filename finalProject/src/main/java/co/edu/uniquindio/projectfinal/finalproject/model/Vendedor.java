@@ -8,7 +8,7 @@ public class Vendedor extends Usuario {
     private String idVendedor;
     private List<Vendedor> listaContactos = new ArrayList<>();
     private List<Producto> listaProductos = new ArrayList<>();
-    private Muro muro = new Muro();
+    private Muro muro = new Muro(idVendedor);
 
     public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String password, String idVendedor) {
         super(nombre, apellido, cedula, direccion, usuario, password);
